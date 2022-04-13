@@ -1,6 +1,4 @@
 import { LitElement, html, css } from 'lit';
-import { WebSeries } from './WebSeries.js';
-//import { deleteCardInOneMinute } from './WebSeries.js';
 
 export class WebSeriesOverview extends LitElement {
 
