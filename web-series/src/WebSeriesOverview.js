@@ -1,5 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import { WebSeries } from './WebSeries.js';
+//import { deleteCardInOneMinute } from './WebSeries.js';
 
 export class WebSeriesOverview extends LitElement {
     static get properties(){
@@ -58,7 +59,7 @@ export class WebSeriesOverview extends LitElement {
         /* Float two columns side by side */
         .card_column {
             float: left;
-            width: 50%;
+            width: 40%;
             padding: 0 10px;
             margin-top: 20px;
             color: aliceblue;
@@ -93,13 +94,26 @@ export class WebSeriesOverview extends LitElement {
             background-color: rgb(218, 0, 0);
             color: black;
         }
+        
+        /* Responsive layout */
+        @media only screen and (max-width: 950px) {
+
+            .flex-container-right, .flex-container-left {
+            flex: 100%;
+            }
+
+            .card_column {
+                width: 100%;
+                display: block;
+                margin-bottom: 20px;
+            }
+        }
     `;
     }
 
     render() {
         return html`
             ${this.myArray.map(series => html`
-            <div class = "card_row">
                 <div class = "card_column">
                     <div class = "card">
                         <h2 id = "card_heading"><b>Title: </b>${series.getTitle.toUpperCase()}</h2>
@@ -109,85 +123,23 @@ export class WebSeriesOverview extends LitElement {
                         <b>Stars:</b>${series.getStars}
                         <br>
                         <b>Streaming Platform:</b>${series.getStreamingPlatform}</p>
+                        <button type = "button" class = "Delete-button" id = Delete-button_${this.i}  @click = "${this.deleteCardInOneMinute(`Delete-button_${this.i}`)}">
+                        Delete</button>
                     </div>
-                </div>
-            </div>`)}
+                </div> 
+                ${this.i++}
+
+            `)}
         `;
     }
+
+    deleteCardInOneMinute(e) {
+
+        console.log(e)
+        var shadow = this.shadowRoot;
+        console.log(shadow.host)
+        // var host = shadow.host
+        // var card_c = host.shadowRoot.querySelector("div.card_column")
+        // console.log(card_c)
+    }
 }
-
-// let i = 0;
-// var row_div;
-// var container = document.querySelector(".DynamicCards");
-// function cardGenerator(series) {
-
-//     if(i%2==0){
-//         //console.log(i);
-//         var new_row_div = document.createElement('div');
-//         row_div=new_row_div;
-//         row_div.className = "card_row";
-//     }
-
-//     container.appendChild(row_div);
-
-//     var column_div = document.createElement('div');
-//     column_div.className = "card_column";
-
-//     var column_div = document.createElement('div');
-//     column_div.className = "card_column";
-
-//     var card_div = document.createElement('div');
-//     card_div.className = "card";
-
-//     var card_heading_h2 = document.createElement("h2");
-//     card_heading_h2.id = "card_heading";
-
-//     var b0 = document.createElement("b");
-//     b0.append("Title ");
-//     card_heading_h2.appendChild(b0);
-//     card_heading_h2.append(`${series.getTitle.toUpperCase()}`);
-
-//     //card_heading_h2.innerHTML = `<b>Title:</b>${series.getTitle.toUpperCase()}`;
-
-//     var card_para_p = document.createElement('p');
-//     card_para_p.id = "card_para";
-
-//     var b1 = document.createElement("b");
-//     b1.append("Directors: ")
-//     card_para_p.appendChild(b1);
-//     card_para_p.append(`${series.getDirector}`);
-//     card_para_p.appendChild(document.createElement("br"));
-//     var b2 = document.createElement("b");
-//     b2.append("Stars: ")
-//     card_para_p.appendChild(b2);
-//     card_para_p.append(`${series.getStars}`);
-//     card_para_p.appendChild(document.createElement("br"));
-//     var b3 = document.createElement("b");
-//     b3.append("Streaming Platform: ");
-//     card_para_p.appendChild(b3);
-//     card_para_p.append(`${series.getStreamingPlatform}`);
-
-//     // card_para_p.innerHTML = `<b>Directors:</b>${series.getDirector}
-//     //             <br>
-//     //             <b>Stars:</b>${series.getStars}
-//     //             <br>
-//     //             <b>Streaming Platform:</b>${series.getStreamingPlatform}`;
-
-//     var delete_button = document.createElement("button");
-//     delete_button.type = "button" ;
-//     delete_button.className = "Delete-button";
-//     delete_button.id = `Delete-button_${i}`;
-//     delete_button.textContent = "Delete";
-//     delete_button.onclick = function()  {
-//         deleteCardInOneMinute(delete_button.id)
-//     };
-
-//     column_div.appendChild(card_div);
-//     card_div.appendChild(card_heading_h2);
-//     card_div.appendChild(card_para_p);
-//     card_div.appendChild(delete_button);
-
-//     row_div.appendChild(column_div);
-//     container.appendChild(row_div);
-//     i=i+1;
-// }
