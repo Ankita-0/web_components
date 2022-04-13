@@ -112,7 +112,7 @@ export class CardComponent extends LitElement {
                         <b>Stars:</b>${series.getStars}
                         <br>
                         <b>Streaming Platform:</b>${series.getStreamingPlatform}</p>
-                        <button type = "button" class = "Delete-button" id = Delete-button_${this.i++}  @click = "${this.deleteCardInOneMinute(`Delete-button_${this.i}`)}">
+                        <button type = "button" class = "Delete-button" id = `Delete-button_${this.i++}`  onclick = "${this.deleteCardInOneMinute(`Delete-button_${this.i}`)}">
                         Delete</button>
                     </div>
             `)}
