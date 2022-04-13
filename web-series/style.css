@@ -23,10 +23,6 @@ body {
     background-color: black;
 }
 
-/* #webseries_form {
-    margin-top: 20px;
-} */
-
 #menu {
     list-style-type: none;
     background-color: rgb(114, 36, 187);
@@ -62,112 +58,11 @@ h1 {
     margin-left: 43%;*/
 }
 
-/*label {
-    color: blueviolet;
-    position: absolute;
-}
-
-input, select {
-    margin-left: 50%;
-    width: 50%;
-}
-
-#add_button {
-    box-shadow: 0 4px 8px 0 rgb(174, 133, 212);
-    margin-top: 20%;
-    background-color: blueviolet;
-    margin-left: 65%;
-    height: 30px;
-    color: rgb(255, 255, 255);
-    width: 25%;
-    text-align: center;
-    cursor: pointer;
-}
-
-#add_button:hover {
-    background-color: green;
-    color: black;
-} */
-
-.card {
-    box-shadow: 0 4px 8px 0 rgb(182, 255, 139);
-    padding: 10px;
-    text-align: center;
-    background-color: rgb(88, 88, 88);
-    color: rgb(240, 213, 248);
-    height: 250px;
-    overflow: scroll;
-    cursor: pointer;
-}
-
-.card::-webkit-scrollbar {
-    width: 2px;
-}
-
-.card:hover {
-    background-color: rgb(110, 110, 110);
-    color: aqua;
-    padding: 12px;
-}
-
-/* Float two columns side by side */
-.card_column {
-    float: left;
-    width: 50%;
-    padding: 0 10px;
-    margin-top: 20px;
-    color: aliceblue;
-}
-
-#card_heading:hover {
-    background-color: rgb(110, 110, 110);
-    color: aqua;
-    text-decoration: underline;
-}
-/*
-#card_image {
-    z-index: -1;
-}
-*/
-#card_para {
-    text-align: justify;
-}
-
-b {
-    color: #000;
-    font-weight: bold;
-}
-
-.Delete-button {
-    box-shadow: 0 4px 4px 0 rgb(174, 133, 212);
-    margin-top: 2%;
-    background-color: blueviolet;
-    margin-left: 65%;
-    /* padding: 5px 30px; */
-    color: rgb(255, 255, 255);
-    height: 30px;
-    width: 30%;
-    text-align: center;
-    cursor: pointer;
-}
-
-
-.Delete-button:hover {
-    background-color: rgb(218, 0, 0);
-    color: black;
-}
-
 /* Responsive layout */
 @media only screen and (max-width: 950px) {
 
     .flex-container-right, .flex-container-left {
       flex: 100%;
-    }
-
-    .card_column {
-        width: 100%;
-        display: block;
-        margin-bottom: 20px;
     }
 }
 
