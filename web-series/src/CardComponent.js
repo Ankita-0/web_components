@@ -112,17 +112,18 @@ export class CardComponent extends LitElement {
                         <b>Stars:</b>${series.getStars}
                         <br>
                         <b>Streaming Platform:</b>${series.getStreamingPlatform}</p>
-                        <button type = "button" class = "Delete-button" id = Delete-button_${this.i++}  @click = "${this.deleteCardInOneMinute(`Delete-button_${this.i}`)}">
+                        <button type = "button" class = "Delete-button" id = "Delete-button_${this.i++}"  onclick = "${this.deleteCardInOneMinute(`Delete-button_${this.i}`)}">
                         Delete</button>
                     </div>
             `)}
         `;
     }
     deleteCardInOneMinute(e) {
-
+       // const b ="#"+e;
         console.log(e)
         var shadow = this.shadowRoot;
-        console.log(shadow.host)
+        const d=shadow.querySelector(".Delete-button");
+        console.log(d)
         // var host = shadow.host
         // var card_c = host.shadowRoot.querySelector("div.card_column")
         // console.log(card_c)
