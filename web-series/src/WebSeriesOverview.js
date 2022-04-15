@@ -147,7 +147,6 @@ export class WebSeriesOverview extends LitElement {
             ${this._myArray.map(series => html`
                 <div class = "card_column">
                     <web-series-card .data=${series}>
-
                     </web-series-card>
                     <button class = "Delete-button" id = "${this.i++}" type = button @click = ${this._deleteCard}> 
                     Delete 
