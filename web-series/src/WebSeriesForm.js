@@ -1,8 +1,19 @@
 import { LitElement, html, css } from 'lit';
+import './CardComponent.js';
+import { WebSeries } from './WebSeries.js';
 
 export class WebSeriesForm extends LitElement{
     constructor() {
         super();
+        
+        // this.addEventListener('data', (event) => {
+        //     const director = event.detail;
+        //     console.log(director)   
+        //     const cardComp=this.shadowRoot.host.parentElement.nextElementSibling.firstElementChild.shadowRoot
+        //     // .querySelector()
+        //     console.log(cardComp) 
+        //     //new WebSeries(event.detail.title, director, event.detail.stars, event.detail.streaming) 
+        // })
     }
     static get styles() {
         return css`
@@ -72,10 +83,44 @@ export class WebSeriesForm extends LitElement{
         <option value="Hotstar">Hotstar</option>
         </select>
         <br><br>
-        </form>
-        <button type = "button" form = "webseries_form" id="add_button">
+
+        <button type = "button" form = "webseries_form" id="add_button" @click = ${this._test}>
         Add
         </button>
+        </form>
       `;
+    }
+    _test (e) {
+        const _b= this.shadowRoot.querySelector('#directors').value;
+        //console.log(_b)
+        const data = {
+            getTitle: this.shadowRoot.querySelector('#title').value,
+            getDirector: this.shadowRoot.querySelector('#directors').value,
+            getStars: this.shadowRoot.querySelector('#stars').value,
+            getStreamingPlatform:this.shadowRoot.querySelector('select').value
+        }
+        // console.log(new WebSeries(this.shadowRoot.querySelector('#title').value, 
+        // this.shadowRoot.querySelector('#directors').value, 
+        // this.shadowRoot.querySelector('#stars').value,
+        // this.shadowRoot.querySelector('select').value))
+        const event =new CustomEvent("data", {
+            bubbles:true,
+            composed:true,
+            detail:
+            new WebSeries(this.shadowRoot.querySelector('#title').value, 
+            this.shadowRoot.querySelector('#directors').value, 
+            this.shadowRoot.querySelector('#stars').value,
+            this.shadowRoot.querySelector('select').value)
+                // title:this.shadowRoot.querySelector('#title').value,
+                // director:this.shadowRoot.querySelector('#directors').value,
+                // stars:this.shadowRoot.querySelector('#stars').value,
+                // streaming:this.shadowRoot.querySelector('select').value
+            //}
+
+
+        });
+        //console.log(event.detail)
+        this.dispatchEvent(event)
+        e.preventDefault();
     }
 }

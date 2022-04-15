@@ -3,19 +3,19 @@ import '../src/web-series.js';
 
 export default {
   title: 'WebSeries',
-  component: 'web-series',
+  component: 'web-series-form>',
   argTypes: {
     backgroundColor: { control: 'color' },
   },
 };
 
 function Template({ title, backgroundColor }) {
+
   return html`
-    <web-series
-      style="--web-series-background-color: ${backgroundColor || 'white'}"
-      .title=${title}
-    >
-    </web-series>
+
+    <web-series-form></web-series-form>
+    <web-series-overview class="DynamicCards"> </web-series-overview>
+
   `;
 }
 
