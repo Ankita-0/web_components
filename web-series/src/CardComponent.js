@@ -4,10 +4,10 @@ import { WebSeries } from './WebSeries.js';
 export class CardComponent extends LitElement {
     static get properties(){
         return {
-            i : {
+            _i : {
                 type: Number
             },
-            myArray: {
+            _myArray: {
                 type: Array
             }
         };
@@ -15,7 +15,7 @@ export class CardComponent extends LitElement {
 
     constructor() {
         super();
-        this.myArray = [new WebSeries("guardian: the lonely and great god", "Lee Eung-bok, Kwon Hyuk-chan", 
+        this._myArray = [new WebSeries("guardian: the lonely and great god", "Lee Eung-bok, Kwon Hyuk-chan", 
         "Gong Yoo, Kim Go-eun, Lee Dong-wook, Yoo In-na, Yook Sung-jae","Netflix"), 
         new WebSeries("money heist", "Lee Eung-bok, Kwon Hyuk-chan", 
         "Úrsula Corberó, Álvaro Morte, Itziar Ituño, Pedro Alonso, Paco Tous, Alba Flores, Miguel Herrán,"+
@@ -29,7 +29,7 @@ export class CardComponent extends LitElement {
         new WebSeries(";)","abc","def","ghi"),
         new WebSeries(":D","ijk","lmn","opq")];
 
-        this.i = 0;
+        this._i = 0;
     }
 
     static get styles() {
@@ -103,7 +103,7 @@ export class CardComponent extends LitElement {
 
     render() {
         return html`
-            ${this.myArray.map(series => html`
+            ${this._myArray.map(series => html`
                     <div class = "card">
                         <h2 id = "card_heading"><b>Title: </b>${series.getTitle.toUpperCase()}</h2>
                         <p id = "card_para">

@@ -1,4 +1,5 @@
 import { LitElement, html, css } from 'lit';
+import { WebSeries } from './WebSeries';
 
 export class WebSeriesForm extends LitElement{
     constructor() {
@@ -72,10 +73,30 @@ export class WebSeriesForm extends LitElement{
         <option value="Hotstar">Hotstar</option>
         </select>
         <br><br>
-        </form>
-        <button type = "button" form = "webseries_form" id="add_button">
+        <button type = "button" form = "webseries_form" id="add_button" @click = ${this._addCard}>
         Add
         </button>
+        </form>
       `;
+    }
+    _addCard (e) {
+        // const data = {
+        //     getTitle: this.shadowRoot.querySelector('#title').value,
+        //     getDirector: this.shadowRoot.querySelector('#directors').value,
+        //     getStars: this.shadowRoot.querySelector('#stars').value,
+        //     getStreamingPlatform:this.shadowRoot.querySelector('select').value
+        // }
+        const event =new CustomEvent("data", {
+            bubbles:true,
+            composed:true,
+            detail:
+            new WebSeries(this.shadowRoot.querySelector('#title').value, 
+            this.shadowRoot.querySelector('#directors').value, 
+            this.shadowRoot.querySelector('#stars').value,
+            this.shadowRoot.querySelector('select').value)
+        });
+        console.log(event.detail)
+        this.dispatchEvent(event)
+        e.preventDefault();
     }
 }
