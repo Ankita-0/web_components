@@ -115,7 +115,7 @@ export class WebSeriesOverview extends LitElement {
         `;
 
         //displaying the msg for 4 sec
-        setTimeout(() => document.querySelector("body").removeChild(document.querySelector("#success_div")), 10000)
+        setTimeout(() => document.querySelector("body").removeChild(document.querySelector("#success_div")), 4000)
     }
 
     _errorMsg() {
@@ -152,12 +152,12 @@ export class WebSeriesOverview extends LitElement {
                     <button class = "Delete-button" id = "${this.i++}" type = button @click = ${this._deleteCard}> 
                     Delete 
                     </button>
-                </div>             
+                    </div>             
             `)}
         `;
     }
-    
-    _deleteCard(id){
+
+    _deleteCard(){
         const deleteB = this.shadowRoot.querySelectorAll("button")
         console.log(deleteB)
     }
