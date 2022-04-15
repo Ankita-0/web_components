@@ -7,83 +7,158 @@ export class WebSeriesOverview extends LitElement {
             _myArray: {
                 type: Array
             },
-            data: {
-                type: Array
-            }
+            i:{type:Number}
         };
     }
     constructor() {
         super();
         this._myArray = [new WebSeries("guardian: the lonely and great god", "Lee Eung-bok, Kwon Hyuk-chan", 
-        "Gong Yoo, Kim Go-eun, Lee Dong-wook, Yoo In-na, Yook Sung-jae","Netflix"), 
+        8.6,"Netflix"),
+        new WebSeries("descendants of the sun","Lee Eung-bok",9.8,"Netflix"), 
         new WebSeries("money heist", "Lee Eung-bok, Kwon Hyuk-chan", 
-        "Úrsula Corberó, Álvaro Morte, Itziar Ituño, Pedro Alonso, Paco Tous, Alba Flores, Miguel Herrán,"+
-        " Jaime Lorente, Esther Acebo, Enrique Arce, María Pedraza, Darko Perić, Kiti Mánver, Hovik Keuchkerian,"+
-        " Luka Peroš, Belén Cuesta, Fernando Cayo, Rodrigo de la Serna, Najwa Nimri","Netflix"),
+        8.2,"Netflix"),
         new WebSeries("shadow and bone", "Eric Heisserer", 
-        "Jessie Mei Li, Archie Renaux, Freddy Carter, Amita Suman, Kit Young, Ben Barnes, Zoë Wanamaker, Lewis Tan,"+
-        "Patrick Gibson, Anna Leong Brophy, Jack Wolfe, Daisy Head, Danielle Galligan, Calahan Skogman","Netflix"),
+        7.7,"Netflix"),
         new WebSeries("it's okay to not be okay", "Park Shin-woo", 
-        "Kim Soo-hyun, Seo Yea-ji, Oh Jung-se, Park Gyu-young","Netflix"),
-        new WebSeries(";)","abc","def","ghi"),
-        new WebSeries(":D","ijk","lmn","opq")];
-        this.data =[];
-
-
+        8.7,"Netflix"),
+        new WebSeries("all of us are dead","Lee Jae-kyoo",7.5,"Netflix"),];
+        this.i =0
     }
 
-
     connectedCallback() {
-        super.connectedCallback();
-        const cardComp=document.querySelector("web-series-form").shadowRoot.querySelector("form")
-        //this.shadowRoot.host.parentNode.parentNode
-        //.firstElementChild.shadowRoot
-        // .querySelector()
-        console.log(cardComp) 
-
+       super.connectedCallback();
         document.addEventListener("data", event => {
-            const director = event.detail;
-            console.log(director) 
-            this._myArray.push(director)
-            console.log(this._myArray)
-            //console.log(this.setAttribute(".data", director))
-
-            
-            // var l= this.shadowRoot.querySelectorAll("web-series-card")
-            // console.log(this.shadowRoot.querySelectorAll("web-series-card")[l.length])
-
+            if(event.detail.getTitle!==""){
+                this._myArray.push(event.detail)
+                this.requestUpdate();
+                this._successMsg();
+            }
+            else{
+                this._errorMsg();
+            }            
         });
-  
-            // .querySelector()
-            //console.log(cardComp) 
-            //new WebSeries(event.detail.title, director, event.detail.stars, event.detail.streaming) 
-        //})
     }
 
     static get styles() {
         return css`
         .card_column {
+            box-shadow: 0 4px 8px 0 rgb(182, 255, 139);
+            padding: 10px;
+            text-align: center;
+            background-color: rgb(88, 88, 88);
+            color: rgb(240, 213, 248);
+            height: 250px;
+            overflow: scroll;
+            cursor: pointer;
+            width: 35%;
+            float : left;
             padding: 0 10px;
-            margin-top: 20px;
-            color: aliceblue;
+            margin: 20px;
+        }
+
+        .card_column::-webkit-scrollbar {
+            width: 2px;
+        }
+
+        .card_column:hover {
+            color: aqua;
+            background-color: blueviolet;
+        }
+        .Delete-button {
+            box-shadow: 0 4px 4px 0 rgb(174, 133, 212);
+            margin-top: 2%;
+            background-color: blueviolet;
+            margin-left: 65%;
+            /* padding: 5px 30px; */
+            color: rgb(255, 255, 255);
+            height: 30px;
+            width: 30%;
+            text-align: center;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .Delete-button:hover {
+            background-color: rgb(218, 0, 0);
+            color: black;
+        }
+
+        /* Responsive layout*/
+        @media only screen and (max-width: 950px) {
+            .card_column {
+                width: 80%;
+                display: block;
+                margin: 10%;
+            }
         }
     `;
     }
+    
+    _successMsg() {
+        const success_div = document.querySelector("body")
+        .insertBefore(document.createElement("div"), document.querySelector("#menu"));
 
-    update_myArray(){
+        success_div.id = "success_div";
 
+        success_div.innerHTML = `
+        <style>
+            #success_div {
+                color : white;
+                background-color: green;
+                text-align: center;
+                height: 20px;
+                width:100%;
+                position: fixed;
+            }
+        </style>
+        Webseries added
+        `;
+
+        //displaying the msg for 4 sec
+        setTimeout(() => document.querySelector("body").removeChild(document.querySelector("#success_div")), 10000)
+    }
+
+    _errorMsg() {
+        const error_div = document.querySelector("body")
+        .insertBefore(document.createElement("div"), document.querySelector("#menu"));
+
+        error_div.id = "error_div";
+
+        error_div.innerHTML = `
+        <style>
+            #error_div {
+                color : white;
+                background-color: red;
+                text-align: center;
+                height: 20px;
+                width:100%;
+                position: fixed;
+            }
+        </style>
+        Please enter the title of the web series
+        `;
+
+        //displaying the error msg for 4 sec
+        setTimeout(() => document.querySelector("body").removeChild(document.querySelector("#error_div")), 4000)    
     }
 
     render() {
-        console.log(this._myArray)
-        // console.log(this.getAttribute(".data"))
         return html`
             ${this._myArray.map(series => html`
                 <div class = "card_column">
-                    <web-series-card .data=${series}></web-series-card>
+                    <web-series-card .data=${series}>
+
+                    </web-series-card>
+                    <button class = "Delete-button" id = "Delete-button_${this.i++}" type = button @click = ${this._deleteCard(`Delete-button_${this.i}`)}> 
+                    Delete 
+                    </button>
                 </div>             
             `)}
         `;
+    }
+    
+    _deleteCard(id){
+        console.log(id)
     }
 
 }
