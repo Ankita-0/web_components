@@ -149,7 +149,7 @@ export class WebSeriesOverview extends LitElement {
                     <web-series-card .data=${series}>
 
                     </web-series-card>
-                    <button class = "Delete-button" id = "Delete-button_${this.i++}" type = button @click = ${this._deleteCard(`Delete-button_${this.i}`)}> 
+                    <button class = "Delete-button" id = "${this.i++}" type = button @click = ${this._deleteCard}> 
                     Delete 
                     </button>
                 </div>             
@@ -158,7 +158,8 @@ export class WebSeriesOverview extends LitElement {
     }
     
     _deleteCard(id){
-        console.log(id)
+        const deleteB = this.shadowRoot.querySelectorAll("button")
+        console.log(deleteB)
     }
 
 }
