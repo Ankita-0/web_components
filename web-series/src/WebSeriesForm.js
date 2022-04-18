@@ -66,13 +66,6 @@ export class WebSeriesForm extends LitElement{
         <lion-input label = "Stars:" type = "text" id = "stars" class="inputs" placeholder="Stars"></lion-input>
         <br><br>         
         <label for="streaming platforms">Streaming Platform: </label>
-        <!--<select id = "streaming platforms" class="inputs" name = "streaming platforms" >
-        <option hidden label="Select Platform"></option>
-        <option value="Youtube">Youtube</option>
-        <option value="Netflix">Netflix</option>
-        <option value="Amazon Prime">Amazon Prime</option>
-        <option value="Hotstar">Hotstar</option>
-        </select>-->
         <lion-select name="streaming platforms" id= "streaming platforms"  class = "inputs">
         <select slot="input">
           <option selected hidden value>Please select</option>
