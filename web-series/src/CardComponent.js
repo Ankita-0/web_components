@@ -3,16 +3,6 @@ import { WebSeries } from './WebSeries.js';
 import'./WebSeriesForm.js';
 
 export class CardComponent extends LitElement {
-static get properties() {
-    return{
-        i:{type:Number}
-    }
-}
-
-    constructor() {
-        super();
-        this.i =0;
-    }
 
     static get styles() {
         return css`
