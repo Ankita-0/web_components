@@ -1,5 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import { WebSeries } from './WebSeries.js';
+import '@lion/input/define';
 
 export class WebSeriesForm extends LitElement{
     constructor() {
@@ -16,7 +17,7 @@ export class WebSeriesForm extends LitElement{
         /*flex: 30%;*/
     }
     
-    input, select {
+     input, select {
         margin-left: 50%;
         width: 50%;
         /*flex: 70%;*/
@@ -55,23 +56,32 @@ export class WebSeriesForm extends LitElement{
     render(){
       return html`
       <form id="webseries_form">
-        <label for="title">Title: </label>
-        <input type = "text" id = "title" class="inputs" placeholder="Title">
+        <!--<label for="title">Title: </label>-->
+        <lion-input label = "Title:" id = "title" class="inputs" placeholder="Title"></lion-input>
         <br><br>
-        <label for="directors">Directors: </label>
-        <input type = "text" id = "directors" class="inputs" placeholder="Directors">
+        <!--<label for="directors">Directors: </label>-->
+        <lion-input label = "Directors:" type = "text" id = "directors" class="inputs" placeholder="Directors"></lion-input>
         <br><br>          
-        <label for="stars">Stars: </label>
-        <input type = "text" id = "stars" class="inputs" placeholder="Stars">
+        <!--<label for="stars">Stars: </label>-->
+        <lion-input label = "Stars:" type = "text" id = "stars" class="inputs" placeholder="Stars"></lion-input>
         <br><br>         
         <label for="streaming platforms">Streaming Platform: </label>
-        <select id = "streaming platforms" class="inputs" name = "streaming platforms" >
+        <!--<select id = "streaming platforms" class="inputs" name = "streaming platforms" >
         <option hidden label="Select Platform"></option>
         <option value="Youtube">Youtube</option>
         <option value="Netflix">Netflix</option>
         <option value="Amazon Prime">Amazon Prime</option>
         <option value="Hotstar">Hotstar</option>
+        </select>-->
+        <lion-select name="streaming platforms" id= "streaming platforms"  class = "inputs">
+        <select slot="input">
+          <option selected hidden value>Please select</option>
+          <option value="Youtube">Youtube</option>
+          <option value="Netflix">Netflix</option>
+          <option value="Amazon Prime">Amazon Prime</option>
+          <option value="Hotstar">Hotstar</option>
         </select>
+      </lion-select>
         <br><br>
 
         <button type = "button" form = "webseries_form" id="add_button" @click = ${this._test}>
