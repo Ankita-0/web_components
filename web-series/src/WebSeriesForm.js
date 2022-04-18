@@ -1,5 +1,5 @@
 import { LitElement, html, css } from 'lit';
-import { WebSeries } from './WebSeries';
+import { WebSeries } from './WebSeries.js';
 
 export class WebSeriesForm extends LitElement{
     constructor() {
@@ -73,19 +73,14 @@ export class WebSeriesForm extends LitElement{
         <option value="Hotstar">Hotstar</option>
         </select>
         <br><br>
-        <button type = "button" form = "webseries_form" id="add_button" @click = ${this._addCard}>
+
+        <button type = "button" form = "webseries_form" id="add_button" @click = ${this._test}>
         Add
         </button>
         </form>
       `;
     }
-    _addCard (e) {
-        // const data = {
-        //     getTitle: this.shadowRoot.querySelector('#title').value,
-        //     getDirector: this.shadowRoot.querySelector('#directors').value,
-        //     getStars: this.shadowRoot.querySelector('#stars').value,
-        //     getStreamingPlatform:this.shadowRoot.querySelector('select').value
-        // }
+    _test (e) {
         const event =new CustomEvent("data", {
             bubbles:true,
             composed:true,
@@ -95,8 +90,9 @@ export class WebSeriesForm extends LitElement{
             this.shadowRoot.querySelector('#stars').value,
             this.shadowRoot.querySelector('select').value)
         });
-        console.log(event.detail)
         this.dispatchEvent(event)
+        Array.from(this.shadowRoot.querySelectorAll("input")).forEach(input => input.value="");
+        this.shadowRoot.querySelector("select").value ="";
         e.preventDefault();
     }
 }
