@@ -11,6 +11,7 @@ customElements.define('web-series-card', CardComponent);
 const tabs = document.querySelectorAll('[data-tab-value]')
 const tabInfos = document.querySelectorAll('[data-tab-info]')
 
+document.querySelector("#tab_1").classList.add('active');
 tabs.forEach(tab => {
     tab.addEventListener('click', () => {
         const target = document
