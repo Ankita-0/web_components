@@ -29,8 +29,9 @@ export class WebSeriesOverview extends LitElement {
        super.connectedCallback();
         document.addEventListener("data", event => {
             if(event.detail.getTitle!==""){
-                this._myArray.push(event.detail)
-                this.requestUpdate();
+                this._myArray = [...this._myArray, event.detail]
+                // this._myArray.push(event.detail)
+                // this.requestUpdate();
                 this._successMsg();
             }
             else{
@@ -156,9 +157,7 @@ export class WebSeriesOverview extends LitElement {
         `;
     }
 
-    _deleteCard(){
-        const deleteB = this.shadowRoot.querySelectorAll("button")
-        console.log(deleteB)
+    _deleteCard(e){
+        e.target.parentElement.remove();
     }
-
 }
