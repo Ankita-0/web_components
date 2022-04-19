@@ -7,3 +7,18 @@ import { CardComponent } from './CardComponent.js';
 customElements.define('web-series-form', WebSeriesForm);
 customElements.define('web-series-overview', WebSeriesOverview);
 customElements.define('web-series-card', CardComponent);
+
+const tabs = document.querySelectorAll('[data-tab-value]')
+const tabInfos = document.querySelectorAll('[data-tab-info]')
+
+tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        const target = document
+            .querySelector(tab.dataset.tabValue);
+
+        tabInfos.forEach(tabInfo => {
+            tabInfo.classList.remove('active')
+        })
+        target.classList.add('active');
+    })
+})

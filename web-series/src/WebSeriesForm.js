@@ -8,50 +8,62 @@ export class WebSeriesForm extends LitElement{
     }
     static get styles() {
         return css`
-    #webseries_form {
-        margin-top: 20px;
-    }
-    label {
-        color: blueviolet;
-        position: absolute;
-        /*flex: 30%;*/
-    }
-    
-     input, select {
-        margin-left: 50%;
-        width: 50%;
-        /*flex: 70%;*/
-    }
-    #add_button {
-        box-shadow: 0 4px 8px 0 rgb(174, 133, 212);
-        margin-top: 20%;
-        background-color: blueviolet;
-        margin-left: 65%;
-        /*padding: 5px 30px;*/
-        height: 30px;
-        color: rgb(255, 255, 255);
-        width: 25%;
-        text-align: center;
-        cursor: pointer;
-    }
-    
-    #add_button:hover {
-        background-color: green;
-        color: black;
-    }
-    /*@media only screen and (max-width: 950px) {
-    
-        .flex-container-right, .flex-container-left {
-          flex: 100%;
+        #webseries_form {
+            margin-top: 100px;
+            margin-left:10px;
         }
-    
-        .card_column {
-            width: 100%;
-            display: block;
-            margin-bottom: 20px;
+        label {
+            color: blueviolet;
+            position: absolute;
+            /*flex: 30%;*/
         }
-    }*/
-    `;
+
+        input{
+            width: 40%;
+            position: absolute;
+            margin-left: 35%;
+
+        }
+        
+        select {
+            width: 40.5%;
+            position: absolute;
+            height: 25px;
+            margin-left: 35%;
+            /*flex: 70%;*/
+        }
+
+        #add_button {
+            box-shadow: 0 4px 8px 0 rgb(174, 133, 212);
+            margin-top: 40%;
+            background-color: blueviolet;
+            /*margin-left: 250%;
+            padding: 5px 30px;*/
+            height: 30px;
+            color: rgb(255, 255, 255);
+            width: 100px;
+            text-align: center;
+            cursor: pointer;
+            overflow:hidden;
+        }
+        
+        #add_button:hover {
+            background-color: green;
+            color: black;
+        }
+        /*@media only screen and (max-width: 950px) {
+        
+            .flex-container-right, .flex-container-left {
+              flex: 100%;
+            }
+        
+            .card_column {
+                width: 100%;
+                display: block;
+                margin-bottom: 20px;
+            }
+        }*/
+        `;
     }
     render(){
       return html`
@@ -67,14 +79,14 @@ export class WebSeriesForm extends LitElement{
         <br><br>         
         <label for="streaming platforms">Streaming Platform: </label>
         <lion-select name="streaming platforms" id= "streaming platforms"  class = "inputs">
-        <select slot="input">
-          <option selected hidden value>Please select</option>
-          <option value="Youtube">Youtube</option>
-          <option value="Netflix">Netflix</option>
-          <option value="Amazon Prime">Amazon Prime</option>
-          <option value="Hotstar">Hotstar</option>
-        </select>
-      </lion-select>
+            <select slot="input">
+                <option selected hidden value>Please select</option>
+                <option value="Youtube">Youtube</option>
+                <option value="Netflix">Netflix</option>
+                <option value="Amazon Prime">Amazon Prime</option>
+                <option value="Hotstar">Hotstar</option>
+            </select>
+        </lion-select>
         <br><br>
 
         <button type = "button" form = "webseries_form" id="add_button" @click = ${this._test}>

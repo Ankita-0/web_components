@@ -8,7 +8,7 @@
     flex-wrap: wrap;
 }
 
-.flex-container-left {
+/*.flex-container-left {
     left: 0;
     padding: 50px;
     flex: 40%;
@@ -18,7 +18,7 @@
     right: 0;
     padding: 50px;
     flex: 60%;
-}
+}*/
 
 body {
     background-color: black;
@@ -53,17 +53,50 @@ h1 {
     position: absolute;
     left: 43vw;
     right: 0;
-    margin: 10px auto;
+    margin: 30px auto;
 
     /*margin-bottom: 2%;
     margin-left: 43%;*/
 }
 
-/* Responsive layout */
+/* Responsive layout 
 @media only screen and (max-width: 950px) {
 
     .flex-container-right, .flex-container-left {
       flex: 100%;
     }
+}*/
+
+[data-tab-info] {
+    display: none;
+}
+  
+.active[data-tab-info] {
+    display: flex;
+}
+  
+.tabs {
+    font-size: 40px;
+    color: rgb(255, 255, 255);
+    display: flex;
+    margin: 0;
+}
+  
+.tabs span {
+    background: rgb(28, 145, 38);
+    padding: 10px;
+    border: 1px solid rgb(255, 255, 255);
+}
+  
+.tabs span:hover {
+    background: rgb(29, 185, 112);
+    cursor: pointer;
+    color: black;
 }
 
+[data-tab-value] {
+    position: relative;
+    height: 30px;
+    background-color: aqua;
+    border-color: rgb(0, 170, 170);
+}

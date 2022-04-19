@@ -1,5 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import { WebSeries } from './WebSeries.js';
+import { LionTabs } from '@lion/tabs';
 
 export class WebSeriesOverview extends LitElement {
     static get properties(){
@@ -29,8 +30,9 @@ export class WebSeriesOverview extends LitElement {
        super.connectedCallback();
         document.addEventListener("data", event => {
             if(event.detail.getTitle!==""){
-                this._myArray.push(event.detail)
-                this.requestUpdate();
+                this._myArray = [...this._myArray, event.detail]
+                //this._myArray.push(event.detail)
+                // this.requestUpdate();
                 this._successMsg();
             }
             else{
@@ -53,7 +55,9 @@ export class WebSeriesOverview extends LitElement {
             width: 35%;
             float : left;
             padding: 0 10px;
-            margin: 20px;
+            margin: 50px;
+            margin-top:200px;
+            margin-left:5%;
         }
 
         .card_column::-webkit-scrollbar {
