@@ -22,19 +22,11 @@
     <button data-tab-value="#tab_1" id="WebSeriesFormbtn" class="tablinks"  >Web Series Form</button>
     <button data-tab-value="#tab_2" slot="WebSeriesOverview" class = "tablinks">Web Series Overview</button>
   </lion-tabs>
-
-  <div class="flex-container">
-
-          <div class="flex-container-left">
-            <div class="tabs__tab" id="tab_1" data-tab-info>
-              <web-series-form ></web-series-form>
-            </div>
-          </div>
-          <div class="flex-container-right">  
-            <div class="tabs__tab" id="tab_2" data-tab-info>       
-            <web-series-overview class="DynamicCards"> </web-series-overview>
-          </div>
-        </div>
+  <div class="tabs__tab" id="tab_1" data-tab-info>
+    <web-series-form ></web-series-form>
+  </div>
+ <div class="tabs__tab" id="tab_2" data-tab-info>       
+    <web-series-overview class="DynamicCards"> </web-series-overview>
   </div>
   <script type="module" src="./src/web-series.js">
   </script>

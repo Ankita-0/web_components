@@ -51,18 +51,6 @@ export class WebSeriesForm extends LitElement{
             background-color: green;
             color: black;
         }
-        /*@media only screen and (max-width: 950px) {
-        
-            .flex-container-right, .flex-container-left {
-              flex: 100%;
-            }
-        
-            .card_column {
-                width: 100%;
-                display: block;
-                margin-bottom: 20px;
-            }
-        }*/
         `;
     }
     render(){

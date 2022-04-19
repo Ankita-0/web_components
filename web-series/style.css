@@ -3,23 +3,6 @@
     margin: 0;
 }
 
-.flex-container {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-/*.flex-container-left {
-    left: 0;
-    padding: 50px;
-    flex: 40%;
-}
-
-.flex-container-right {
-    right: 0;
-    padding: 50px;
-    flex: 60%;
-}*/
-
 body {
     background-color: black;
 }
@@ -58,14 +41,6 @@ h1 {
     /*margin-bottom: 2%;
     margin-left: 43%;*/
 }
-
-/* Responsive layout 
-@media only screen and (max-width: 950px) {
-
-    .flex-container-right, .flex-container-left {
-      flex: 100%;
-    }
-}*/
 
 [data-tab-info] {
     display: none;

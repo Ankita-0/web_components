@@ -55,9 +55,8 @@ export class WebSeriesOverview extends LitElement {
             width: 35%;
             float : left;
             padding: 0 10px;
-            margin: 50px;
+            margin: 45px;
             margin-top:200px;
-            margin-left:5%;
         }
 
         .card_column::-webkit-scrollbar {
