@@ -13,14 +13,18 @@ const tabs = document.querySelectorAll('[data-tab-value]')
 const tabInfos = document.querySelectorAll('[data-tab-info]')
 
 document.querySelector("#tab_1").classList.add('active');
+
 tabs.forEach(tab => {
     tab.addEventListener('click', () => {
         const target = document
             .querySelector(tab.dataset.tabValue);
 
+        //const btn = document.getElementById(tab.id);
+
         tabInfos.forEach(tabInfo => {
-            tabInfo.classList.remove('active')
+            tabInfo.classList.remove('active');
         })
         target.classList.add('active');
+        //console.log(tab.id);
     })
 })

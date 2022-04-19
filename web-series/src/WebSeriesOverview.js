@@ -32,11 +32,11 @@ export class WebSeriesOverview extends LitElement {
                 this._myArray = [...this._myArray, event.detail]
                 //this._myArray.push(event.detail)
                 // this.requestUpdate();
-                this._successMsg();
+                this._successMsg("Webseries added");
             }
             else{
-                this._errorMsg();
-            }            
+                this._errorMsg("Please enter the title of the web series");
+            }             
         });
     }
 
@@ -51,7 +51,7 @@ export class WebSeriesOverview extends LitElement {
             height: 250px;
             overflow: scroll;
             cursor: pointer;
-            width: 35%;
+            width: 300px;
             float : left;
             padding: 0 10px;
             margin: 45px;
@@ -96,7 +96,7 @@ export class WebSeriesOverview extends LitElement {
     `;
     }
     
-    _successMsg() {
+    _successMsg(msg) {
         const success_div = document.querySelector("body")
         .insertBefore(document.createElement("div"), document.querySelector("#menu"));
 
@@ -111,16 +111,17 @@ export class WebSeriesOverview extends LitElement {
                 height: 20px;
                 width:100%;
                 position: fixed;
+                /*z-index:1;*/
             }
         </style>
-        Webseries added
+        ${msg}
         `;
 
         //displaying the msg for 4 sec
         setTimeout(() => document.querySelector("body").removeChild(document.querySelector("#success_div")), 4000)
     }
 
-    _errorMsg() {
+    _errorMsg(msg) {
         const error_div = document.querySelector("body")
         .insertBefore(document.createElement("div"), document.querySelector("#menu"));
 
@@ -135,14 +136,16 @@ export class WebSeriesOverview extends LitElement {
                 height: 20px;
                 width:100%;
                 position: fixed;
+                /*z-index:1;*/
             }
         </style>
-        Please enter the title of the web series
+        ${msg}
         `;
 
         //displaying the error msg for 4 sec
         setTimeout(() => document.querySelector("body").removeChild(document.querySelector("#error_div")), 4000)    
     }
+
 
     render() {
         return html`
@@ -153,14 +156,13 @@ export class WebSeriesOverview extends LitElement {
                     <button class = "Delete-button" id = "${this.i++}" type = button @click = ${this._deleteCard}> 
                     Delete 
                     </button>
-                    </div>             
+                </div>             
             `)}
         `;
     }
 
-    _deleteCard(){
-        const deleteB = this.shadowRoot.querySelectorAll("button")
-        console.log(deleteB)
+    _deleteCard(e){
+        e.target.parentElement.remove();
+        this._successMsg("Successfully deleted")
     }
-
 }

@@ -13,15 +13,20 @@
 
 <body>
   <ul id="menu">
-    <li id="menu_items">Home</li>
-    <li id="menu_items">Contact</li>
-    <li id="menu_items">Help</li>
+    <lion-tabs>
+    <li id="menu_items">
+      <button data-tab-value="#tab_1" id="WebSeriesFormbtn" class="tablinks"  >Web Series Form</button>
+    </li>
+    <li id="menu_items">
+      <button data-tab-value="#tab_2" id="WebSeriesOverviewbtn" class = "tablinks">Web Series Overview</button>
+    </li>
+  </lion-tabs>
   </ul>
   <h1 id="Header"> WEB SERIES</h1>
-  <lion-tabs>
+  <!-- <lion-tabs>
     <button data-tab-value="#tab_1" id="WebSeriesFormbtn" class="tablinks"  >Web Series Form</button>
     <button data-tab-value="#tab_2" slot="WebSeriesOverview" class = "tablinks">Web Series Overview</button>
-  </lion-tabs>
+  </lion-tabs> -->
   <div class="tabs__tab" id="tab_1" data-tab-info>
     <web-series-form ></web-series-form>
   </div>
