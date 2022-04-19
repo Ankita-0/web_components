@@ -1,6 +1,9 @@
 import { LitElement, html, css } from 'lit';
 import { WebSeries } from './WebSeries.js';
 import '@lion/input/define';
+//import '@lion/form/define';
+//import '@lion/select/define';
+//import '@lion/button/define';
 
 export class WebSeriesForm extends LitElement{
     constructor() {

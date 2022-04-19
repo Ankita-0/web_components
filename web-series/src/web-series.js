@@ -2,6 +2,7 @@
 import { WebSeriesForm } from './WebSeriesForm.js';
 import { WebSeriesOverview } from './WebSeriesOverview.js';
 import { CardComponent } from './CardComponent.js';
+import { LionTabs } from '@lion/tabs';
 
 //customElements.define('web-series', WebSeries);
 customElements.define('web-series-form', WebSeriesForm);

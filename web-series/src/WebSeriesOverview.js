@@ -1,6 +1,5 @@
 import { LitElement, html, css } from 'lit';
 import { WebSeries } from './WebSeries.js';
-import { LionTabs } from '@lion/tabs';
 
 export class WebSeriesOverview extends LitElement {
     static get properties(){
@@ -151,17 +150,17 @@ export class WebSeriesOverview extends LitElement {
                 <div class = "card_column">
                     <web-series-card .data=${series}>
                     </web-series-card>
-                   <!-- <button class = "Delete-button" id = "${this.i++}" type = button @click = ${this._deleteCard}> 
+                    <button class = "Delete-button" id = "${this.i++}" type = button @click = ${this._deleteCard}> 
                     Delete 
-                    </button>-->
+                    </button>
                     </div>             
             `)}
         `;
     }
 
-    // _deleteCard(){
-    //     const deleteB = this.shadowRoot.querySelectorAll("button")
-    //     console.log(deleteB)
-    // }
+    _deleteCard(){
+        const deleteB = this.shadowRoot.querySelectorAll("button")
+        console.log(deleteB)
+    }
 
 }
