@@ -49,25 +49,6 @@ h1 {
 .active[data-tab-info] {
     display: flex;
 }
-  
-.tabs {
-    font-size: 40px;
-    color: rgb(255, 255, 255);
-    display: flex;
-    margin: 0;
-}
-  
-.tabs span {
-    background: rgb(28, 145, 38);
-    padding: 10px;
-    border: 1px solid rgb(255, 255, 255);
-}
-  
-.tabs span:hover {
-    background: rgb(29, 185, 112);
-    cursor: pointer;
-    color: black;
-}
 
 [data-tab-value] {
     position: relative;
