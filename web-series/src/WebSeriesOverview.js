@@ -16,17 +16,6 @@ export class WebSeriesOverview extends LitElement {
 
     connectedCallback() {
        super.connectedCallback();
-        // document.addEventListener("data", event => {
-        //     if(event.detail.getTitle!==""){
-        //         this._myArray = [...this._myArray, event.detail]
-        //         //this._myArray.push(event.detail)
-        //         // this.requestUpdate();
-        //         this._successMsg("Webseries added");
-        //     }
-        //     else{
-        //         this._errorMsg("Please enter the title of the web series");
-        //     }             
-        // });
     }
 
     static get styles() {
@@ -136,10 +125,6 @@ export class WebSeriesOverview extends LitElement {
 
 
     render() {
-        // if(this.data !== undefined){
-        //     this._myArray = [...this.data];
-        //     console.log(this.data)
-        // }
         return html`
             ${this.data.map(series => html`
                 <div class = "card_column">

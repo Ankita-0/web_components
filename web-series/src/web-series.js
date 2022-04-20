@@ -29,17 +29,7 @@ class Webseries extends LitElement {
 
     connectedCallback(){
         super.connectedCallback();
-        //     document.addEventListener("data", event => {
-        //     if(event.detail.getTitle!==""){
-        //         //this.series= [...this.series, event.detail]
-        //         //this._myArray.push(event.detail)
-        //         // this.requestUpdate();
-        //         //this._successMsg("Webseries added");
-        //     }
-        //     // else{
-        //     //     this._errorMsg("Please enter the title of the web series");
-        //     // }             
-        // });
+
         //this._tabs();
         // const tabs = this.shadowRoot.querySelectorAll('[data-tab-value]')
         // const tabInfos = this.shadowRoot.querySelectorAll('[data-tab-info]')
@@ -144,8 +134,6 @@ class Webseries extends LitElement {
 
     _addSeries(event){
         this.series = [...this.series, event.detail]
-        //console.log(this.series)
-
     }
 
     // _tabs(){

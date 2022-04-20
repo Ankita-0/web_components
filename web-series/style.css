@@ -7,28 +7,8 @@ body {
     background-color: black;
 }
 
-/* #menu {
-    list-style-type: none;
-    background-color: blueviolet;
-    font-size:0;
-    overflow: hidden;
-    margin: 0;
-    padding: 0;
-} */
-
-/* #menu_items {
-    display: inline-block;
-    text-align: center;
-    text-decoration: none;
-}
-
-#menu_items:hover [data-tab-value]:hover {
-    background-color: black;
-    color: blueviolet;
-    cursor: pointer;
-}
-
-h1 {                                                                                                                                                                
+h1 {   
+    margin-top: 30px;                                                                                                                                                             
     color: blueviolet;
     background-color: black;
     position: absolute;
@@ -39,9 +19,9 @@ h1 {
    /* margin: 30px auto;*/
 
     /*margin-bottom: 2%;
-    margin-left: 43%;
-} */
-
+    margin-left: 43%;*/
+} 
+/* 
 #tab_2 {
     margin: 10%;
 }
@@ -60,4 +40,4 @@ h1 {
     background-color: blueviolet;
     border: none;
     color:azure ;
-} 
+}  */
