@@ -1,7 +1,7 @@
 import { WebSeriesForm } from './WebSeriesForm.js';
 import { WebSeriesOverview } from './WebSeriesOverview.js';
 import { CardComponent } from './CardComponent.js';
-//import '@lion/tabs/define';
+import '@lion/tabs/define';
 import { LitElement, html, css } from 'lit';
 import { WebSeries } from './WebSeries.js';
 
@@ -87,20 +87,23 @@ class Webseries extends LitElement {
             border: none;
             color:azure ;
         }
+        lion-tabs{
+            background-color : white;
+        }
         `;
     }
 
     render () {
         return html`
         <ul id="menu">
-        <lion-tabs>
+        <lion-tab>
         <li id="menu_items">
           <button slot="tab" data-tab-value="#tab_1" id="#tab_1" class="tablinks" @click = ${this._tabs} >Web Series Form</button>
         </li>
         <li id="menu_items">
           <button slot = "tab" data-tab-value="#tab_2" id="#tab_2" class = "tablinks" @click = ${this._tabs}>Web Series Overview</button>
         </li>
-        </lion-tabs>
+        </lion-tab>
         </ul>
         <div class="tabs__tab tab_1 active" id="tab_1" data-tab-info>
             <web-series-form  @data = ${this._addSeries}></web-series-form>
