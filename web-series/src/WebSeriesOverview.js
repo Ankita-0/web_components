@@ -4,40 +4,29 @@ import { WebSeries } from './WebSeries.js';
 export class WebSeriesOverview extends LitElement {
     static get properties(){
         return {
-            _myArray: {
-                type: Array
-            },
+            data:{type:Array},
             i:{type:Number}
         };
     }
     constructor() {
         super();
-        this._myArray = [new WebSeries("guardian: the lonely and great god", "Lee Eung-bok, Kwon Hyuk-chan", 
-        8.6,"Netflix"),
-        new WebSeries("descendants of the sun","Lee Eung-bok",9.8,"Netflix"), 
-        new WebSeries("money heist", "Lee Eung-bok, Kwon Hyuk-chan", 
-        8.2,"Netflix"),
-        new WebSeries("shadow and bone", "Eric Heisserer", 
-        7.7,"Netflix"),
-        new WebSeries("it's okay to not be okay", "Park Shin-woo", 
-        8.7,"Netflix"),
-        new WebSeries("all of us are dead","Lee Jae-kyoo",7.5,"Netflix"),];
         this.i =0
+        this.data =[];
     }
 
     connectedCallback() {
        super.connectedCallback();
-        document.addEventListener("data", event => {
-            if(event.detail.getTitle!==""){
-                this._myArray = [...this._myArray, event.detail]
-                //this._myArray.push(event.detail)
-                // this.requestUpdate();
-                this._successMsg("Webseries added");
-            }
-            else{
-                this._errorMsg("Please enter the title of the web series");
-            }             
-        });
+        // document.addEventListener("data", event => {
+        //     if(event.detail.getTitle!==""){
+        //         this._myArray = [...this._myArray, event.detail]
+        //         //this._myArray.push(event.detail)
+        //         // this.requestUpdate();
+        //         this._successMsg("Webseries added");
+        //     }
+        //     else{
+        //         this._errorMsg("Please enter the title of the web series");
+        //     }             
+        // });
     }
 
     static get styles() {
@@ -147,8 +136,12 @@ export class WebSeriesOverview extends LitElement {
 
 
     render() {
+        // if(this.data !== undefined){
+        //     this._myArray = [...this.data];
+        //     console.log(this.data)
+        // }
         return html`
-            ${this._myArray.map(series => html`
+            ${this.data.map(series => html`
                 <div class = "card_column">
                     <web-series-card .data=${series}>
                     </web-series-card>

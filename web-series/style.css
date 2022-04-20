@@ -7,16 +7,16 @@ body {
     background-color: black;
 }
 
-#menu {
+/* #menu {
     list-style-type: none;
     background-color: blueviolet;
     font-size:0;
     overflow: hidden;
     margin: 0;
     padding: 0;
-}
+} */
 
-#menu_items {
+/* #menu_items {
     display: inline-block;
     text-align: center;
     text-decoration: none;
@@ -39,8 +39,8 @@ h1 {
    /* margin: 30px auto;*/
 
     /*margin-bottom: 2%;
-    margin-left: 43%;*/
-}
+    margin-left: 43%;
+} */
 
 #tab_2 {
     margin: 10%;
@@ -60,4 +60,4 @@ h1 {
     background-color: blueviolet;
     border: none;
     color:azure ;
-}
+} 

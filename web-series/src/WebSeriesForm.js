@@ -1,28 +1,32 @@
+//import '@lion/form/define';
 import { LitElement, html, css } from 'lit';
 import { ScopedElementsMixin } from '@open-wc/scoped-elements';
 import { WebSeries } from './WebSeries.js';
-import { LionInput } from '@lion/input';
-import { LionButton } from '@lion/button';
-import { LionForm } from '@lion/form';
+import '@lion/input/define';
+//import { LionInput } from '@lion/input';
+import '@lion/button/define';
+
+// eslint-disable-next-line import/no-unresolved
+//import '@lion/form/define';
 //import { LionSelect } from '@lion/select';
 
-export class WebSeriesForm extends ScopedElementsMixin(LitElement){
+export class WebSeriesForm extends LitElement{
     constructor() {
         super();
     }
 
-    static get scopedElements() {
-        return {
-          'lion-input': LionInput,
-          'lion-button': LionButton,
-          'lion-form': LionForm,
-          //'lion-select' : LionSelect
-        };
-      }
+    // static get scopedElements() {
+    //     return {
+    //       'lion-input': LionInput,
+    //       'lion-button': LionButton,
+    //       'lion-form': LionForm,
+    //       //'lion-select' : LionSelect
+    //     };
+    //   }
 
     static get styles() {
         return css`
-        lion-form, #webseries_form {
+        form, #webseries_form {
             margin-top: 100px;
             margin-left:10px;
         }
@@ -49,7 +53,7 @@ export class WebSeriesForm extends ScopedElementsMixin(LitElement){
 
         #add_button {
             box-shadow: 0 4px 8px 0 rgb(174, 133, 212);
-            margin-top: 40%;
+            margin-top: 10%;
             background-color: blueviolet;
             /*margin-left: 250%;
             padding: 5px 30px;*/
@@ -69,15 +73,16 @@ export class WebSeriesForm extends ScopedElementsMixin(LitElement){
     }
     render(){
       return html`
-      <lion-form id="webseries_form">
+      <lion-form>
+      <form name="webseries_form" id="webseries_form" @submit = ${this._test}>
         <!--<label for="title">Title: </label>-->
-        <lion-input label = "Title:" id = "title" class="inputs" placeholder="Title"></lion-input>
+        <lion-input name="title" label = "Title:" id = "title" class="inputs" placeholder="Title"></lion-input>
         <br><br>
         <!--<label for="directors">Directors: </label>-->
-        <lion-input label = "Directors:" type = "text" id = "directors" class="inputs" placeholder="Directors"></lion-input>
+        <lion-input label = "Directors:" type = "text" id = "directors" name="directors" class="inputs" placeholder="Directors"></lion-input>
         <br><br>          
         <!--<label for="stars">Stars: </label>-->
-        <lion-input label = "Stars:" type = "text" id = "stars" class="inputs" placeholder="Stars"></lion-input>
+        <lion-input name="stars" label = "Stars:" type = "text" id = "stars" class="inputs" placeholder="Stars"></lion-input>
         <br><br>         
         <label for="streaming platforms">Streaming Platform: </label>
         <lion-select name="streaming platforms" id= "streaming platforms"  class = "inputs">
@@ -91,9 +96,10 @@ export class WebSeriesForm extends ScopedElementsMixin(LitElement){
         </lion-select>
         <br><br>
 
-        <lion-button type = "button" form = "webseries_form" id="add_button" @click = ${this._test}>
+        <button type = "submit" id="add_button"><strong>
         Add
-        </lion-button>
+        </strong></button>
+        </form>
         </lion-form>
       `;
     }
