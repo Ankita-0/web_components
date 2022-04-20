@@ -93,5 +93,4 @@ export class CardComponent extends LitElement {
        </div>
        `;   
     }
-
 }

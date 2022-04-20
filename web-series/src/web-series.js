@@ -29,27 +29,6 @@ class Webseries extends LitElement {
 
     connectedCallback(){
         super.connectedCallback();
-
-        //this._tabs();
-        // const tabs = this.shadowRoot.querySelectorAll('[data-tab-value]')
-        // const tabInfos = this.shadowRoot.querySelectorAll('[data-tab-info]')
-        // console.log(tabs)
-        // this.shadowRoot.querySelector("#tab_1").classList.add('active');
-
-        // tabs.forEach(tab => {
-        //     tab.addEventListener('click', () => {
-        //         const target = this.shadowRoot
-        //             .querySelector(tab.dataset.tabValue);
-
-        //         //const btn = document.getElementById(tab.id);
-
-        //         tabInfos.forEach(tabInfo => {
-        //             tabInfo.classList.remove('active');
-        //         })
-        //         target.classList.add('active');
-        //         //console.log(tab.id);
-        //     })
-        // })
     }
 
     static get styles() {
@@ -94,7 +73,7 @@ class Webseries extends LitElement {
         }
         
         [data-tab-info] {
-            display: block;
+            display: none;
         }
           
         .active[data-tab-info] {
@@ -116,19 +95,19 @@ class Webseries extends LitElement {
         <ul id="menu">
         <lion-tabs>
         <li id="menu_items">
-          <button slot="tab" data-tab-value="#tab_1" id="WebSeriesFormbtn" class="tablinks"  >Web Series Form</button>
+          <button slot="tab" data-tab-value="#tab_1" id="#tab_1" class="tablinks" @click = ${this._tabs} >Web Series Form</button>
         </li>
         <li id="menu_items">
-          <button slot = "tab" data-tab-value="#tab_2" id="WebSeriesOverviewbtn" class = "tablinks">Web Series Overview</button>
+          <button slot = "tab" data-tab-value="#tab_2" id="#tab_2" class = "tablinks" @click = ${this._tabs}>Web Series Overview</button>
         </li>
-      </lion-tabs>
-      </ul>
-      <div class="tabs__tab tab_1" id="tab_1" data-tab-info>
-      <web-series-form @data = ${this._addSeries}></web-series-form>
-    </div>
-   <div class="tabs__tab" id="tab_2" data-tab-info>       
-      <web-series-overview .data=${this.series} class="DynamicCards"> </web-series-overview>
-    </div>
+        </lion-tabs>
+        </ul>
+        <div class="tabs__tab tab_1 active" id="tab_1" data-tab-info>
+            <web-series-form  @data = ${this._addSeries}></web-series-form>
+        </div>
+        <div class="tabs__tab" id="tab_2" data-tab-info>       
+            <web-series-overview .data=${this.series} class="DynamicCards"> </web-series-overview>
+        </div>
         `;
     }
 
@@ -136,34 +115,18 @@ class Webseries extends LitElement {
         this.series = [...this.series, event.detail]
     }
 
-    // _tabs(){
-
-    //     const tabs = this.shadowRoot.querySelectorAll('[data-tab-value]')
-    //     const tabInfos = document.querySelectorAll('[data-tab-info]')
-    //     console.log(tabs)
-    //     //document.querySelector("#tab_1").classList.add('active');
-
-    //     tabs.forEach(tab => {
-    //         tab.addEventListener('click', () => {
-    //             const target = document
-    //                 .querySelector(tab.dataset.tabValue);
-
-    //             //const btn = document.getElementById(tab.id);
-
-    //             tabInfos.forEach(tabInfo => {
-    //                 tabInfo.classList.remove('active');
-    //             })
-    //             target.classList.add('active');
-    //             //console.log(tab.id);
-    //         })
-    //     })
-    // }
-
+    _tabs(e){
+        const tabInfos = this.shadowRoot.querySelectorAll('[data-tab-info]')
+        const currentTab = this.shadowRoot.querySelector(e.target.id);
+        
+        tabInfos.forEach(tabInfo => {
+            tabInfo.classList.remove('active');
+        })
+        currentTab.classList.add('active');
+    }
 }
 
 customElements.define('web-series', Webseries);
 customElements.define('web-series-form', WebSeriesForm);
 customElements.define('web-series-overview', WebSeriesOverview);
 customElements.define('web-series-card', CardComponent);
-
-

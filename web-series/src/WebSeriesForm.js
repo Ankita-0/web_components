@@ -1,28 +1,13 @@
-//import '@lion/form/define';
 import { LitElement, html, css } from 'lit';
 import { ScopedElementsMixin } from '@open-wc/scoped-elements';
 import { WebSeries } from './WebSeries.js';
 import '@lion/input/define';
-//import { LionInput } from '@lion/input';
 import '@lion/button/define';
-
-// eslint-disable-next-line import/no-unresolved
-//import '@lion/form/define';
-//import { LionSelect } from '@lion/select';
 
 export class WebSeriesForm extends LitElement{
     constructor() {
         super();
     }
-
-    // static get scopedElements() {
-    //     return {
-    //       'lion-input': LionInput,
-    //       'lion-button': LionButton,
-    //       'lion-form': LionForm,
-    //       //'lion-select' : LionSelect
-    //     };
-    //   }
 
     static get styles() {
         return css`
