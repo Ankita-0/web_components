@@ -53,9 +53,8 @@ export class WebSeriesOverview extends LitElement {
             cursor: pointer;
             width: 300px;
             float : left;
-            padding: 0 10px;
-            margin: 45px;
-            margin-top:200px;
+            /*padding: 0 10px;*/
+            margin: 5%;
         }
 
         .card_column::-webkit-scrollbar {
@@ -90,7 +89,7 @@ export class WebSeriesOverview extends LitElement {
             .card_column {
                 width: 80%;
                 display: block;
-                margin: 10%;
+                /*margin: 10%;*/
             }
         }
     `;

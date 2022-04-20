@@ -3,6 +3,14 @@ import'./WebSeriesForm.js';
 
 export class CardComponent extends LitElement {
 
+    static get properties() {
+        return {
+            data : {
+                type : Object
+            }
+        };
+    }
+
     static get styles() {
         return css`
         /*.card {

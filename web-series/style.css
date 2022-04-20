@@ -32,12 +32,18 @@ h1 {
     color: blueviolet;
     background-color: black;
     position: absolute;
-    left: 43vw;
+    width: 100%;
+    text-align: center;
+    /*left: 40vw;
     right: 0;
-    margin: 30px auto;
+   /* margin: 30px auto;*/
 
     /*margin-bottom: 2%;
     margin-left: 43%;*/
+}
+
+#tab_2 {
+    margin: 10%;
 }
 
 [data-tab-info] {

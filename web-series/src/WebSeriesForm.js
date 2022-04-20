@@ -1,17 +1,28 @@
 import { LitElement, html, css } from 'lit';
+import { ScopedElementsMixin } from '@open-wc/scoped-elements';
 import { WebSeries } from './WebSeries.js';
-import '@lion/input/define';
-//import '@lion/form/define';
-//import '@lion/select/define';
-//import '@lion/button/define';
+import { LionInput } from '@lion/input';
+import { LionButton } from '@lion/button';
+import { LionForm } from '@lion/form';
+//import { LionSelect } from '@lion/select';
 
-export class WebSeriesForm extends LitElement{
+export class WebSeriesForm extends ScopedElementsMixin(LitElement){
     constructor() {
         super();
     }
+
+    static get scopedElements() {
+        return {
+          'lion-input': LionInput,
+          'lion-button': LionButton,
+          'lion-form': LionForm,
+          //'lion-select' : LionSelect
+        };
+      }
+
     static get styles() {
         return css`
-        #webseries_form {
+        lion-form, #webseries_form {
             margin-top: 100px;
             margin-left:10px;
         }
@@ -58,7 +69,7 @@ export class WebSeriesForm extends LitElement{
     }
     render(){
       return html`
-      <form id="webseries_form">
+      <lion-form id="webseries_form">
         <!--<label for="title">Title: </label>-->
         <lion-input label = "Title:" id = "title" class="inputs" placeholder="Title"></lion-input>
         <br><br>
@@ -80,10 +91,10 @@ export class WebSeriesForm extends LitElement{
         </lion-select>
         <br><br>
 
-        <button type = "button" form = "webseries_form" id="add_button" @click = ${this._test}>
+        <lion-button type = "button" form = "webseries_form" id="add_button" @click = ${this._test}>
         Add
-        </button>
-        </form>
+        </lion-button>
+        </lion-form>
       `;
     }
     _test (e) {
