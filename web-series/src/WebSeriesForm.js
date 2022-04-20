@@ -62,7 +62,7 @@ export class WebSeriesForm extends LitElement{
       <lion-form>
       <form name="webseries_form" id="webseries_form" @submit = ${this._test}>
         <!--<label for="title">Title: </label>-->
-        <lion-input name="title" label = "Title:" id = "title" class="inputs" placeholder="Title" @keyup= ${this._capitalize}></lion-input>
+        <lion-input name="title" label = "Title:" id = "title" class="inputs" placeholder="Title" style:"border:red" @keyup= ${this._capitalize}></lion-input>
         <br><br>
         <!--<label for="directors">Directors: </label>-->
         <lion-input label = "Directors:" type = "text" id = "directors" name="directors" class="inputs" placeholder="Directors" @keyup= ${this._capitalize}></lion-input>
@@ -101,7 +101,7 @@ export class WebSeriesForm extends LitElement{
         const stars = this.shadowRoot.querySelector('#stars').value;
         const select = this.shadowRoot.querySelector('select').value;
 
-        if(title === null || title === "" ||director === null || director === "" ||stars === null || stars === "" ||select === null || select === "" ){
+        if(select === null || select === "" ){
             msg_div._errorMsg("Please enter all the details of the Web series")
         }
 
@@ -131,7 +131,6 @@ export class WebSeriesForm extends LitElement{
             return false;
         }
         else{
-            console.log("valid")
             return true;
         }
     }
