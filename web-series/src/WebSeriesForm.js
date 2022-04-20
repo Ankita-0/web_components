@@ -1,6 +1,7 @@
 import { LitElement, html, css } from 'lit';
 import { ScopedElementsMixin } from '@open-wc/scoped-elements';
 import { WebSeries } from './WebSeries.js';
+import { WebSeriesOverview } from './WebSeriesOverview.js';
 import '@lion/input/define';
 import '@lion/button/define';
 
@@ -61,13 +62,13 @@ export class WebSeriesForm extends LitElement{
       <lion-form>
       <form name="webseries_form" id="webseries_form" @submit = ${this._test}>
         <!--<label for="title">Title: </label>-->
-        <lion-input name="title" label = "Title:" id = "title" class="inputs" placeholder="Title"></lion-input>
+        <lion-input name="title" label = "Title:" id = "title" class="inputs" placeholder="Title" @keyup= ${this._capitalize}></lion-input>
         <br><br>
         <!--<label for="directors">Directors: </label>-->
-        <lion-input label = "Directors:" type = "text" id = "directors" name="directors" class="inputs" placeholder="Directors"></lion-input>
+        <lion-input label = "Directors:" type = "text" id = "directors" name="directors" class="inputs" placeholder="Directors" @keyup= ${this._capitalize}></lion-input>
         <br><br>          
         <!--<label for="stars">Stars: </label>-->
-        <lion-input name="stars" label = "Stars:" type = "text" id = "stars" class="inputs" placeholder="Stars"></lion-input>
+        <lion-input name="stars" label = "Stars:" type = "text" id = "stars" class="inputs" placeholder="Stars" required></lion-input>
         <br><br>         
         <label for="streaming platforms">Streaming Platform: </label>
         <lion-select name="streaming platforms" id= "streaming platforms"  class = "inputs">
@@ -88,19 +89,60 @@ export class WebSeriesForm extends LitElement{
         </lion-form>
       `;
     }
+
+    _capitalize(e){
+        e.target.value = e.target.value.slice(0,1).toUpperCase()+e.target.value.slice(1,e.target.value.length);
+    }
+
     _test (e) {
+        const msg_div = new WebSeriesOverview;
+        const title = this.shadowRoot.querySelector('#title').value;
+        const director = this.shadowRoot.querySelector('#directors').value;
+        const stars = this.shadowRoot.querySelector('#stars').value;
+        const select = this.shadowRoot.querySelector('select').value;
+
+        if(title === null || title === "" ||director === null || director === "" ||stars === null || stars === "" ||select === null || select === "" ){
+            msg_div._errorMsg("Please enter all the details of the Web series")
+        }
+
+        if(!this._validator(title)||!this._validator(director)){
+            msg_div._errorMsg("Please enter a valid name");
+        }
+        else if(!this._numericValidator(stars)) {
+            msg_div._errorMsg("values between 0 and 10 are allowed")
+        }
+        else{
         const event =new CustomEvent("data", {
             bubbles:true,
             composed:true,
             detail:
-            new WebSeries(this.shadowRoot.querySelector('#title').value, 
-            this.shadowRoot.querySelector('#directors').value, 
-            this.shadowRoot.querySelector('#stars').value,
-            this.shadowRoot.querySelector('select').value)
+            new WebSeries(title, director, stars, select)
         });
         this.dispatchEvent(event)
         Array.from(this.shadowRoot.querySelectorAll("input")).forEach(input => input.value="");
         this.shadowRoot.querySelector("select").value ="";
+    }
         e.preventDefault();
+    }
+
+    _validator(value) {
+        const re = /^[A-Za-z. ]+[A-Za-z. ]$/;
+        if(!re.test(value)){
+            return false;
+        }
+        else{
+            console.log("valid")
+            return true;
+        }
+    }
+
+    _numericValidator(value){
+        const re = /^10$|^[0-9]$|^[0-9]\.[0-9]$/;
+        if(!re.test(value)){
+            return false;
+        }
+        else{
+            return true;
+        }
     }
 }

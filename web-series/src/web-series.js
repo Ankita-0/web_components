@@ -87,9 +87,6 @@ class Webseries extends LitElement {
             border: none;
             color:azure ;
         }
-        lion-tabs{
-            background-color : white;
-        }
         `;
     }
 
