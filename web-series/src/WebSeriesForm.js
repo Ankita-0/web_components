@@ -2,7 +2,10 @@ import { LitElement, html, css } from 'lit';
 import { WebSeries } from './WebSeries.js';
 import { WebSeriesOverview } from './WebSeriesOverview.js';
 import '@lion/input/define';
-import '@lion/button/define';
+import '@lion/form/define';
+
+// import '@lion/input/define';
+// import '@lion/button/define';
 //import '@lion/form/define';
 
 
@@ -62,14 +65,12 @@ export class WebSeriesForm extends LitElement{
       return html`
       <lion-form>
       <form name="webseries_form" id="webseries_form" @submit = ${this._test}>
-        <!--<label for="title">Title: </label>-->
-        <lion-input  fieldName="title" label = "Title:" id = "title" class="inputs" placeholder="Title" style:"border:red"  @keyup= ${this._capitalize}></lion-input>
+        <lion-input  name="title" label = "Title:" id = "title" class="inputs" placeholder="Title" .modelValue=${'hi'}  style:"border:red"  @keyup= ${this._capitalize}></lion-input>
         <br><br>
-        <!--<label for="directors">Directors: </label>-->
         <lion-input label = "Directors:" type = "text" id = "directors" name="directors" class="inputs" placeholder="Directors" @keyup= ${this._capitalize}></lion-input>
         <br><br>          
         <!--<label for="stars">Stars: </label>-->
-        <lion-input name="stars" label = "Stars:" type = "text" id = "stars" class="inputs" placeholder="Stars" required></lion-input>
+        <lion-input name="stars" label = "Stars:" type = "text" id = "stars" class="inputs" placeholder="Stars"></lion-input>
         <br><br>         
         <label for="streaming platforms">Streaming Platform: </label>
         <lion-select name="streaming platforms" id= "streaming platforms"  class = "inputs">

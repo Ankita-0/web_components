@@ -4,6 +4,8 @@ import { CardComponent } from './CardComponent.js';
 import '@lion/tabs/define';
 import { LitElement, html, css } from 'lit';
 import { WebSeries } from './WebSeries.js';
+import '@lion/input/define';
+import '@lion/form/define';
 
 class Webseries extends LitElement {
     static get properties(){
@@ -53,7 +55,7 @@ class Webseries extends LitElement {
                 <web-series-overview .data=${this.series} class="DynamicCards"> </web-series-overview>
             </p>
         </lion-tabs>
-        `;
+        `;  
     }
 
     _addSeries(event){
@@ -65,3 +67,5 @@ customElements.define('web-series', Webseries);
 customElements.define('web-series-form', WebSeriesForm);
 customElements.define('web-series-overview', WebSeriesOverview);
 customElements.define('web-series-card', CardComponent);
+
+
