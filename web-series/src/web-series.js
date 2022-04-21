@@ -33,96 +33,31 @@ class Webseries extends LitElement {
 
     static get styles() {
         return css`
-        #menu {
-            list-style-type: none;
-            background-color: blueviolet;
-            font-size:0;
-            overflow: hidden;
-            margin: 0;
-            padding: 0;
-        }
-        
-        #menu_items {
-            display: inline-block;
-            text-align: center;
-            text-decoration: none;
-        }
-        
-        #menu_items:hover [data-tab-value]:hover {
-            background-color: black;
-            color: blueviolet;
-            cursor: pointer;
-        }
-        
-        h1 {                                                                                                                                                                
-            color: blueviolet;
-            background-color: black;
-            position: absolute;
-            width: 100%;
-            text-align: center;
-            /*left: 40vw;
-            right: 0;
-           /* margin: 30px auto;*/
-        
-            /*margin-bottom: 2%;
-            margin-left: 43%;*/
-        }
-        
-        #tab_2 {
-            margin: 10%;
-        }
-        
-        [data-tab-info] {
-            display: none;
-        }
-          
-        .active[data-tab-info] {
-            display: flex;
-        }
-        
-        [data-tab-value] {
-            position: relative;
-            height: 30px;
-            background-color: blueviolet;
-            border: none;
-            color:azure ;
+        .formbtn, .overviewbtn {
+            background-color:blueviolet;
+            color:azure;
+            height:30px;
         }
         `;
     }
 
     render () {
         return html`
-        <ul id="menu">
-        <lion-tab>
-        <li id="menu_items">
-          <button slot="tab" data-tab-value="#tab_1" id="#tab_1" class="tablinks" @click = ${this._tabs} >Web Series Form</button>
-        </li>
-        <li id="menu_items">
-          <button slot = "tab" data-tab-value="#tab_2" id="#tab_2" class = "tablinks" @click = ${this._tabs}>Web Series Overview</button>
-        </li>
-        </lion-tab>
-        </ul>
-        <div class="tabs__tab tab_1 active" id="tab_1" data-tab-info>
+        <lion-tabs>
+          <button slot="tab" class = "formbtn">Web Series Form</button>
+          <p slot="panel">
             <web-series-form  @data = ${this._addSeries}></web-series-form>
-        </div>
-        <div class="tabs__tab" id="tab_2" data-tab-info>       
-            <web-series-overview .data=${this.series} class="DynamicCards"> </web-series-overview>
-        </div>
+            </p>
+          <button slot="tab" class = "overviewbtn">Web Series Overview</button>
+            <p slot="panel">       
+                <web-series-overview .data=${this.series} class="DynamicCards"> </web-series-overview>
+            </p>
+        </lion-tabs>
         `;
     }
 
     _addSeries(event){
         this.series = [...this.series, event.detail]
-    }
-
-    _tabs(e){
-        const tabInfos = this.shadowRoot.querySelectorAll('[data-tab-info]')
-        const currentTab = this.shadowRoot.querySelector(e.target.id);
-        
-        tabInfos.forEach(tabInfo => {
-            tabInfo.classList.remove('active');
-        })
-        currentTab.classList.add('active');
     }
 }
 

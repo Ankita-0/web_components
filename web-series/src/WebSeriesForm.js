@@ -4,6 +4,8 @@ import { WebSeries } from './WebSeries.js';
 import { WebSeriesOverview } from './WebSeriesOverview.js';
 import '@lion/input/define';
 import '@lion/button/define';
+//eslint-disabled
+//import '@lion/form-core/types';
 
 export class WebSeriesForm extends LitElement{
     constructor() {
@@ -62,7 +64,7 @@ export class WebSeriesForm extends LitElement{
       <lion-form>
       <form name="webseries_form" id="webseries_form" @submit = ${this._test}>
         <!--<label for="title">Title: </label>-->
-        <lion-input name="title" label = "Title:" id = "title" class="inputs" placeholder="Title" style:"border:red" @keyup= ${this._capitalize}></lion-input>
+        <lion-input  fieldName="title" label = "Title:" id = "title" class="inputs" placeholder="Title" style:"border:red"  @keyup= ${this._capitalize}></lion-input>
         <br><br>
         <!--<label for="directors">Directors: </label>-->
         <lion-input label = "Directors:" type = "text" id = "directors" name="directors" class="inputs" placeholder="Directors" @keyup= ${this._capitalize}></lion-input>
