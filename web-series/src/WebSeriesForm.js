@@ -1,11 +1,10 @@
 import { LitElement, html, css } from 'lit';
-import { ScopedElementsMixin } from '@open-wc/scoped-elements';
 import { WebSeries } from './WebSeries.js';
 import { WebSeriesOverview } from './WebSeriesOverview.js';
 import '@lion/input/define';
 import '@lion/button/define';
-//eslint-disabled
-//import '@lion/form-core/types';
+//import '@lion/form/define';
+
 
 export class WebSeriesForm extends LitElement{
     constructor() {
