@@ -1,13 +1,13 @@
 import { LitElement, html, css } from 'lit';
 import { WebSeries } from './WebSeries.js';
 import { WebSeriesOverview } from './WebSeriesOverview.js';
+import '@lion/select/define';
 import '@lion/input/define';
+import { Required } from '@lion/form-core';
+import { Pattern } from '@lion/form-core';
 import '@lion/form/define';
-
-// import '@lion/input/define';
-// import '@lion/button/define';
-//import '@lion/form/define';
-
+import { loadDefaultFeedbackMessages } from '@lion/validate-messages';
+import '@lion/button/define';
 
 export class WebSeriesForm extends LitElement{
     constructor() {
@@ -16,19 +16,21 @@ export class WebSeriesForm extends LitElement{
 
     static get styles() {
         return css`
-        form, #webseries_form {
+        #webseries_form {
             margin-top: 100px;
-            margin-left:10px;
-        }
-        label {
-            color: blueviolet;
-            position: absolute;
-            /*flex: 30%;*/
+            margin:10% 30%;
+            border-color: blueviolet;
         }
 
-        input{
-            width: 40%;
-            position: absolute;
+        label {
+            color: blueviolet;}
+            /*position: absolute;
+            flex: 30%;
+        }
+
+        lion-input{
+            width: 30%;
+            /*position: absolute;
             margin-left: 35%;
 
         }
@@ -38,8 +40,8 @@ export class WebSeriesForm extends LitElement{
             position: absolute;
             height: 25px;
             margin-left: 35%;
-            /*flex: 70%;*/
-        }
+            /*flex: 70%;
+        }*/
 
         #add_button {
             box-shadow: 0 4px 8px 0 rgb(174, 133, 212);
@@ -62,18 +64,20 @@ export class WebSeriesForm extends LitElement{
         `;
     }
     render(){
+        loadDefaultFeedbackMessages();
       return html`
       <lion-form>
       <form name="webseries_form" id="webseries_form" @submit = ${this._test}>
-        <lion-input  name="title" label = "Title:" id = "title" class="inputs" placeholder="Title" .modelValue=${'hi'}  style:"border:red"  @keyup= ${this._capitalize}></lion-input>
+        <lion-input  name="title" label = "Title:" id = "title" class="inputs" placeholder="Title" .modelValue=${'Goblin'} .validators=${[new Required(), new Pattern(/^[A-Za-z. ]+[A-Za-z. ]$/)]} @keyup= ${this._capitalize}></lion-input>
         <br><br>
-        <lion-input label = "Directors:" type = "text" id = "directors" name="directors" class="inputs" placeholder="Directors" @keyup= ${this._capitalize}></lion-input>
+        <lion-input label = "Directors:" type = "text" id = "directors" name="directors" class="inputs" placeholder="Directors" .validators=${[new Required(), new Pattern(/^[A-Za-z. ]+[A-Za-z. ]$/)]} @keyup= ${this._capitalize}></lion-input>
         <br><br>          
         <!--<label for="stars">Stars: </label>-->
-        <lion-input name="stars" label = "Stars:" type = "text" id = "stars" class="inputs" placeholder="Stars"></lion-input>
+        <lion-input name="stars" label = "Stars:" type = "text" id = "stars" class="inputs" placeholder="Stars" .validators=${[new Required(), new Pattern(/^10$|^[0-9]$|^[0-9]\.[0-9]$/)]}></lion-input>
         <br><br>         
         <label for="streaming platforms">Streaming Platform: </label>
-        <lion-select name="streaming platforms" id= "streaming platforms"  class = "inputs">
+        <lion-select name="streaming platforms" id= "streaming platforms"  class = "inputs" .validators=${[new Required()]}>
+        <br>
             <select slot="input">
                 <option selected hidden value>Please select</option>
                 <option value="Youtube">Youtube</option>
@@ -84,9 +88,9 @@ export class WebSeriesForm extends LitElement{
         </lion-select>
         <br><br>
 
-        <button type = "submit" id="add_button"><strong>
+        <lion-button-submit  id="add_button"><strong>
         Add
-        </strong></button>
+        </strong></lion-button-submit>
         </form>
         </lion-form>
       `;
@@ -96,6 +100,12 @@ export class WebSeriesForm extends LitElement{
         e.target.value = e.target.value.slice(0,1).toUpperCase()+e.target.value.slice(1,e.target.value.length);
     }
 
+    _clickHandler(e){
+        console.log(e)
+        e.target.dispatchEvent(new Event('submit', {bubbles:true,
+        cancelable:true}))
+    }
+
     _test (e) {
         const msg_div = new WebSeriesOverview;
         const title = this.shadowRoot.querySelector('#title').value;
@@ -103,17 +113,6 @@ export class WebSeriesForm extends LitElement{
         const stars = this.shadowRoot.querySelector('#stars').value;
         const select = this.shadowRoot.querySelector('select').value;
 
-        if(select === null || select === "" ){
-            msg_div._errorMsg("Please enter all the details of the Web series")
-        }
-
-        if(!this._validator(title)||!this._validator(director)){
-            msg_div._errorMsg("Please enter a valid name");
-        }
-        else if(!this._numericValidator(stars)) {
-            msg_div._errorMsg("values between 0 and 10 are allowed")
-        }
-        else{
         const event =new CustomEvent("data", {
             bubbles:true,
             composed:true,
@@ -123,8 +122,8 @@ export class WebSeriesForm extends LitElement{
         this.dispatchEvent(event)
         Array.from(this.shadowRoot.querySelectorAll("input")).forEach(input => input.value="");
         this.shadowRoot.querySelector("select").value ="";
-    }
         e.preventDefault();
+        //this.shadowRoot.querySelector('#webseries_form').reset();
     }
 
     _validator(value) {
