@@ -65,35 +65,35 @@ export class WebSeriesForm extends LitElement{
     }
     render(){
         loadDefaultFeedbackMessages();
-      return html`
-      <lion-form>
-      <form name="webseries_form" id="webseries_form" @submit = ${this._test}>
-        <lion-input  name="title" label = "Title:" id = "title" class="inputs" placeholder="Title" .modelValue=${'Goblin'} .validators=${[new Required(), new Pattern(/^[A-Za-z. ]+[A-Za-z. ]$/)]} @keyup= ${this._capitalize}></lion-input>
-        <br><br>
-        <lion-input label = "Directors:" type = "text" id = "directors" name="directors" class="inputs" placeholder="Directors" .validators=${[new Required(), new Pattern(/^[A-Za-z. ]+[A-Za-z. ]$/)]} @keyup= ${this._capitalize}></lion-input>
-        <br><br>          
-        <!--<label for="stars">Stars: </label>-->
-        <lion-input name="stars" label = "Stars:" type = "text" id = "stars" class="inputs" placeholder="Stars" .validators=${[new Required(), new Pattern(/^10$|^[0-9]$|^[0-9]\.[0-9]$/)]}></lion-input>
-        <br><br>         
-        <label for="streaming platforms">Streaming Platform: </label>
-        <lion-select name="streaming platforms" id= "streaming platforms"  class = "inputs" .validators=${[new Required()]}>
-        <br>
-            <select slot="input">
-                <option selected hidden value>Please select</option>
-                <option value="Youtube">Youtube</option>
-                <option value="Netflix">Netflix</option>
-                <option value="Amazon Prime">Amazon Prime</option>
-                <option value="Hotstar">Hotstar</option>
-            </select>
-        </lion-select>
-        <br><br>
+        return html`
+        <lion-form>
+        <form name="webseries_form" id="webseries_form" @submit = ${this._test}>
+            <lion-input  name="title" label = "Title:" id = "title" class="inputs" placeholder="Title" .modelValue=${'Goblin'} .validators=${[new Required(), new Pattern(/^[A-Za-z. ]+[A-Za-z. ]$/)]} @keyup= ${this._capitalize}></lion-input>
+            <br><br>
+            <lion-input label = "Directors:" type = "text" id = "directors" name="directors" class="inputs" placeholder="Directors" .validators=${[new Required(), new Pattern(/^[A-Za-z. ]+[A-Za-z. ]$/)]} @keyup= ${this._capitalize}></lion-input>
+            <br><br>          
+            <!--<label for="stars">Stars: </label>-->
+            <lion-input name="stars" label = "Stars:" type = "text" id = "stars" class="inputs" placeholder="Stars" .validators=${[new Required(), new Pattern(/^10$|^[0-9]$|^[0-9]\.[0-9]$/)]}></lion-input>
+            <br><br>         
+            <label for="streaming platforms">Streaming Platform: </label>
+            <lion-select name="streaming platforms" id= "streaming platforms"  class = "inputs" .validators=${[new Required()]}>
+            <br>
+                <select slot="input">
+                    <option selected hidden value>Please select</option>
+                    <option value="Youtube">Youtube</option>
+                    <option value="Netflix">Netflix</option>
+                    <option value="Amazon Prime">Amazon Prime</option>
+                    <option value="Hotstar">Hotstar</option>
+                </select>
+            </lion-select>
+            <br><br>
 
-        <lion-button-submit  id="add_button"><strong>
-        Add
-        </strong></lion-button-submit>
-        </form>
-        </lion-form>
-      `;
+            <lion-button-submit id="add_button"><strong>
+            Add
+            </strong></lion-button-submit>
+            </form>
+            </lion-form>
+        `;
     }
 
     _capitalize(e){
@@ -101,7 +101,6 @@ export class WebSeriesForm extends LitElement{
     }
 
     _clickHandler(e){
-        console.log(e)
         e.target.dispatchEvent(new Event('submit', {bubbles:true,
         cancelable:true}))
     }
@@ -113,17 +112,23 @@ export class WebSeriesForm extends LitElement{
         const stars = this.shadowRoot.querySelector('#stars').value;
         const select = this.shadowRoot.querySelector('select').value;
 
-        const event =new CustomEvent("data", {
-            bubbles:true,
-            composed:true,
-            detail:
-            new WebSeries(title, director, stars, select)
-        });
-        this.dispatchEvent(event)
-        Array.from(this.shadowRoot.querySelectorAll("input")).forEach(input => input.value="");
-        this.shadowRoot.querySelector("select").value ="";
+        if(!this._validator(title)||!this._validator(director)||!this._numericValidator(stars)||select === null || select === ""){
+            msg_div._errorMsg("Please fill all the fields properly");
+        }
+        else{
+            const event =new CustomEvent("data", {
+                bubbles:true,
+                composed:true,
+                detail:
+                new WebSeries(title, director, stars, select)
+            });
+            this.shadowRoot.querySelector('#webseries_form').dispatchEvent(event)
+
+            this.shadowRoot.querySelector('#webseries_form').reset();
+            // Array.from(this.shadowRoot.querySelectorAll("input")).forEach(input => input.value="");
+            // this.shadowRoot.querySelector("select").value ="";
+        }
         e.preventDefault();
-        //this.shadowRoot.querySelector('#webseries_form').reset();
     }
 
     _validator(value) {

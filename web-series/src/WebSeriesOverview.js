@@ -1,5 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import { WebSeries } from './WebSeries.js';
+import '@lion/button/define';
 
 export class WebSeriesOverview extends LitElement {
     static get properties(){
@@ -46,7 +47,7 @@ export class WebSeriesOverview extends LitElement {
         .Delete-button {
             box-shadow: 0 4px 4px 0 rgb(174, 133, 212);
             margin-top: 2%;
-            background-color: blueviolet;
+            background-color: red;
             margin-left: 65%;
             /* padding: 5px 30px; */
             color: rgb(255, 255, 255);
@@ -130,9 +131,9 @@ export class WebSeriesOverview extends LitElement {
                 <div class = "card_column">
                     <web-series-card .data=${series}>
                     </web-series-card>
-                    <button class = "Delete-button" id = "${this.i++}" type = button @click = ${this._deleteCard}> 
+                    <lion-button class = "Delete-button" id = "${this.i++}" @click = ${this._deleteCard}> 
                     Delete 
-                    </button>
+                    </lion-button>
                 </div>             
             `)}
         `;
