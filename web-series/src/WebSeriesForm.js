@@ -18,12 +18,13 @@ export class WebSeriesForm extends LitElement{
         return css`
         #webseries_form {
             margin-top: 100px;
-            margin:10% 30%;
+            margin:10% 25vw;
             border-color: blueviolet;
         }
 
         label {
-            color: blueviolet;}
+            color: darkpurple;
+        }
             /*position: absolute;
             flex: 30%;
         }

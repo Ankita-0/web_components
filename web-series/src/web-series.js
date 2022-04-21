@@ -39,6 +39,7 @@ class Webseries extends LitElement {
             background-color:blueviolet;
             color:azure;
             height:30px;
+            z-index:1;
         }
         `;
     }

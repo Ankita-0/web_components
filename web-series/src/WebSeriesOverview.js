@@ -25,15 +25,15 @@ export class WebSeriesOverview extends LitElement {
             box-shadow: 0 4px 8px 0 rgb(182, 255, 139);
             padding: 10px;
             text-align: center;
-            background-color: rgb(88, 88, 88);
-            color: rgb(240, 213, 248);
+            background-color: rgb(180, 180, 180);
+            color: blueviolet;
             height: 250px;
             overflow: scroll;
             cursor: pointer;
             width: 300px;
             float : left;
             /*padding: 0 10px;*/
-            margin: 5%;
+            margin: 7%;
         }
 
         .card_column::-webkit-scrollbar {
@@ -127,6 +127,7 @@ export class WebSeriesOverview extends LitElement {
 
     render() {
         return html`
+        <div class = "overview">
             ${this.data.map(series => html`
                 <div class = "card_column">
                     <web-series-card .data=${series}>
@@ -136,6 +137,7 @@ export class WebSeriesOverview extends LitElement {
                     </lion-button>
                 </div>             
             `)}
+        </div>
         `;
     }
 

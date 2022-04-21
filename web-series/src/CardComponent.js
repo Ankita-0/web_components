@@ -47,7 +47,7 @@ export class CardComponent extends LitElement {
             text-align: justify;
         }
         b {
-            color: #000;
+            color: black;
             font-weight: bold;
         }
 
