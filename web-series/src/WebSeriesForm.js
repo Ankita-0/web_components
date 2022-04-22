@@ -69,9 +69,9 @@ export class WebSeriesForm extends LitElement{
         return html`
         <lion-form>
         <form name="webseries_form" id="webseries_form" @submit = ${this._test}>
-            <lion-input  name="title" label = "Title:" id = "title" class="inputs" placeholder="Title" .modelValue=${'Goblin'} .validators=${[new Required(), new Pattern(/^[A-Za-z. ]+[A-Za-z. ]$/)]} @keyup= ${this._capitalize}></lion-input>
+            <lion-input  name="title" label = "Title:" id = "title" class="inputs" placeholder="Title" .modelValue=${'Goblin'} .validators=${[new Required(), new Pattern(/^[A-Za-z. ]+[A-Za-z. ]$/)]} .parser = "${viewValue => viewValue.replace(/^[a-z]/, str => str.toUpperCase())}"></lion-input>
             <br><br>
-            <lion-input label = "Directors:" type = "text" id = "directors" name="directors" class="inputs" placeholder="Directors" .validators=${[new Required(), new Pattern(/^[A-Za-z. ]+[A-Za-z. ]$/)]} @keyup= ${this._capitalize}></lion-input>
+            <lion-input label = "Directors:" type = "text" id = "directors" name="directors" class="inputs" placeholder="Directors" .validators=${[new Required(), new Pattern(/^[A-Za-z. ]+[A-Za-z. ]$/)]} .parser = "${viewValue => viewValue.replace(/^[a-z]/, str => str.toUpperCase())}"></lion-input>
             <br><br>          
             <!--<label for="stars">Stars: </label>-->
             <lion-input name="stars" label = "Stars:" type = "text" id = "stars" class="inputs" placeholder="Stars" .validators=${[new Required(), new Pattern(/^10$|^[0-9]$|^[0-9]\.[0-9]$/)]}></lion-input>
@@ -95,10 +95,6 @@ export class WebSeriesForm extends LitElement{
             </form>
             </lion-form>
         `;
-    }
-
-    _capitalize(e){
-        e.target.value = e.target.value.slice(0,1).toUpperCase()+e.target.value.slice(1,e.target.value.length);
     }
 
     _clickHandler(e){
