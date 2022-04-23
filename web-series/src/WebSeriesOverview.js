@@ -1,5 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import '@lion/button/define';
+import { ajax } from '@lion/ajax';
 
 export class WebSeriesOverview extends LitElement {
     static get properties(){
@@ -129,13 +130,14 @@ export class WebSeriesOverview extends LitElement {
         if(this.data!== undefined){
             this.data = [...this.data];
         }
+        var id =0;
         return html`
         <div class = "overview">
             ${this.data.map(series => html`
                 <div class = "card_column">
                     <web-series-card .data=${series}>
                     </web-series-card>
-                    <lion-button class = "Delete-button" id = "${this.i++}" @click = ${this._deleteCard}> 
+                    <lion-button class = "Delete-button" id = "${series.id}" @click = ${this._deleteCard}> 
                     Delete 
                     </lion-button>
                 </div>             
@@ -145,7 +147,14 @@ export class WebSeriesOverview extends LitElement {
     }
 
     _deleteCard(e){
-        e.target.parentElement.remove();
+
+        ajax.fetch('http://localhost:3000/data/'+e.target.id, {
+            method:'DELETE'
+        })
+        .then(response => console.log("successfully deleted"))
+        .catch(error => console.log(error))
+
+        // e.target.parentElement.remove();
         this._successMsg("Successfully deleted")
     }
 }

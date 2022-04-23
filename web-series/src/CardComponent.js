@@ -83,13 +83,13 @@ export class CardComponent extends LitElement {
     render() {
        return html`
        <div class = "card">
-           <h2 id = "card_heading"><b>Title: </b>${this.data.Title.toUpperCase()}</h2>
-           <p id = "card_para">
-           <b>Directors:</b>${this.data.Directors}
-           <br>
-           <b>Stars:</b>${this.data.Stars}
-           <br>
-           <b>Streaming Platform:</b>${this.data.Streaming_Platform}</p>
+            <h2 id = "card_heading"><b>Title: </b>${this.data.Title.toUpperCase()}</h2>
+            <p id = "card_para">
+            <b>Directors:</b>${this.data.Directors}
+            <br>
+            <b>Stars:</b>${this.data.Stars}
+            <br>
+            <b>Streaming Platform:</b>${this.data.Streaming_Platform}</p>
        </div>
        `;   
     }

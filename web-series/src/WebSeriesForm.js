@@ -123,27 +123,12 @@ export class WebSeriesForm extends LitElement{
                 })
                 .then((response) => {
                 console.log("success")
-                alert("Webseries added: "+ title)
+                msg_div._successMsg("Webseries added successfully!")
             })
                 .catch(error => console.log(error));
 
-            // const event =new CustomEvent("data", {
-            //     bubbles:true,
-            //     composed:true,
-            //     detail: {
-            //         "Title": title,
-            //         "Directors": director,
-            //         "Stars": stars,
-            //         "Streaming_Platform": select
-            //     }
-            // });
-            // this.shadowRoot.querySelector('#webseries_form').dispatchEvent(event)
-
              this.shadowRoot.querySelector('#webseries_form').reset();
-            // Array.from(this.shadowRoot.querySelectorAll("input")).forEach(input => input.value="");
-            // this.shadowRoot.querySelector("select").value ="";
         }
-        //e.preventDefault();
     }
 }
 
