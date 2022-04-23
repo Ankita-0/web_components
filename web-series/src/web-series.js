@@ -70,5 +70,3 @@ customElements.define('web-series', Webseries);
 customElements.define('web-series-form', WebSeriesForm);
 customElements.define('web-series-overview', WebSeriesOverview);
 customElements.define('web-series-card', CardComponent);
-
-
