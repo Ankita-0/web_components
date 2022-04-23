@@ -68,7 +68,7 @@ export class WebSeriesForm extends LitElement{
         return html`
         <lion-form>
         <form name="webseries_form" id="webseries_form" @submit = ${this._test}>
-            <lion-input  name="title" label = "Title:" id = "title" class="inputs" placeholder="Title" .modelValue=${'Goblin'} .validators=${[new Required({}, { getMessage: () => "Please enter a title"}), new NonNumeric()]} .parser = "${viewValue => viewValue.replace(/^[a-z]/, str => str.toUpperCase())}"></lion-input>
+            <lion-input  name="title" label = "Title:" id = "title" class="inputs" placeholder="Title" .validators=${[new Required({}, { getMessage: () => "Please enter a title"}), new NonNumeric()]} .parser = "${viewValue => viewValue.replace(/^[a-z]/, str => str.toUpperCase())}"></lion-input>
             <br><br>
             <lion-input label = "Directors:" type = "text" id = "directors" name="directors" class="inputs" placeholder="Directors" .validators=${[new Required({}, { getMessage: () => "Please enter the name of the director/directors"}), new NonNumeric()]} .parser = "${viewValue => viewValue.replace(/^[a-z]/, str => str.toUpperCase())}"></lion-input>
             <br><br>          
@@ -98,36 +98,31 @@ export class WebSeriesForm extends LitElement{
 
     _test (e) {
         const msg_div = new WebSeriesOverview;
-        const title = this.shadowRoot.querySelector('#title').value;
-        const director = this.shadowRoot.querySelector('#directors').value;
-        const stars = this.shadowRoot.querySelector('#stars').value;
-        const select = this.shadowRoot.querySelector('select').value;
+        const series_data = { 
+            "Title": this.shadowRoot.querySelector('#title').value,
+            "Directors": this.shadowRoot.querySelector('#directors').value,
+            "Stars":  this.shadowRoot.querySelector('#stars').value,
+            "Streaming_Platform": this.shadowRoot.querySelector('select').value
+        }
         const re = /\D/;
 
-        if(!re.test(title)||!re.test(director)||!re.test(stars)||select === null || select === ""){
+        if(!re.test(series_data.Title)||!re.test(series_data.Directors)||!re.test(series_data.Stars)||series_data.Streaming_Platform === null || series_data.Streaming_Platform === ""){
             msg_div._errorMsg("Please fill all the fields properly");
         }
         else{
-
             ajax.fetch('http://localhost:3000/data', {
                 method: 'POST',
                 headers : {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ 
-                    "Title": title,
-                    "Directors": director,
-                    "Stars": stars,
-                    "Streaming_Platform": select }
-                    ),
+                body: JSON.stringify(series_data),
                 })
                 .then((response) => {
                 console.log("success")
                 msg_div._successMsg("Webseries added successfully!")
             })
-                .catch(error => console.log(error));
-
-             this.shadowRoot.querySelector('#webseries_form').reset();
+            .catch(error => console.log(error));
+            this.shadowRoot.querySelector('#webseries_form').reset();
         }
     }
 }

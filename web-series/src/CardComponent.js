@@ -1,5 +1,4 @@
 import { LitElement, html, css } from 'lit';
-import'./WebSeriesForm.js';
 
 export class CardComponent extends LitElement {
 
