@@ -4,8 +4,7 @@ import { CardComponent } from './CardComponent.js';
 import '@lion/tabs/define';
 import { LitElement, html, css } from 'lit';
 import { WebSeries } from './WebSeries.js';
-import '@lion/input/define';
-import '@lion/form/define';
+import { ajax } from '@lion/ajax';
 
 class Webseries extends LitElement {
     static get properties(){
@@ -56,7 +55,24 @@ class Webseries extends LitElement {
                 <web-series-overview .data=${this.series} class="DynamicCards"> </web-series-overview>
             </p>
         </lion-tabs>
+        <button id="test" @click = ${this.fetchSeries}> get </button>
         `;  
+    }
+
+    fetchSeries () {
+        ajax.fetch("http://localhost:3000/data", 
+        {
+            method:"GET",
+            headers: {
+            //     "Access-Control-Allow-Origin" : ["http://localhost:8084"]
+                
+            // 
+            "Referrer-Policy": "no-referrer-when-downgrade"
+        }
+        }
+        )
+        .then(response => {console.log(response)})
+        .catch(error => console.log(error));
     }
 
     _addSeries(event){

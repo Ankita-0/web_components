@@ -17,6 +17,7 @@
     "start": "web-dev-server"
   },
   "dependencies": {
+    "@lion/ajax": "^0.14.0",
     "@lion/button": "^0.17.0",
     "@lion/form": "^0.14.0",
     "@lion/input": "^0.17.0",

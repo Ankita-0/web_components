@@ -1,0 +1,41 @@
+{
+            "data": [
+                {
+                    "Title" : "guardian: the lonely and great god",
+                    "Directors" : "Lee Eung-bok, Kwon Hyuk-chan",
+                    "Stars" : 8.6,
+                    "Streaming Platform" : "Netflix"
+                },
+                {
+                    "Title" : "descendants of the sun",
+                    "Directors" : "Lee Eung-bok",
+                    "Stars" : 9.8,
+                    "Streaming Platform" : "Netflix"
+                },
+                {
+                    "Title" : "money heist", 
+                    "Directors" : "Alex Pina",
+                    "Stars" : 8.2,
+                    "Streaming Platform" : "Netflix"
+                },
+                {
+                    "Title" : "shadow and bone",
+                    "Directors" : "Eric Heisserer",
+                    "Stars" : 7.7,
+                    "Streaming Platform" : "Netflix"
+                },
+                {
+                    "Title" : "it's okay to not be okay",
+                    "Directors" : "Park Shin-woo",
+                    "Stars" : 8.7,
+                    "Streaming Platform" : "Netflix"
+                },
+                {
+                    "Title" : "all of us are dead",
+                    "Directors" : "Lee Jae-kyoo",
+                    "Stars" : 7.5,
+                    "Streaming Platform" : "Netflix"
+                }
+            ]
+        
+}

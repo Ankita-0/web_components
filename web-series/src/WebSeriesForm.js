@@ -3,8 +3,7 @@ import { WebSeries } from './WebSeries.js';
 import { WebSeriesOverview } from './WebSeriesOverview.js';
 import '@lion/select/define';
 import '@lion/input/define';
-import { Required } from '@lion/form-core';
-import { Pattern } from '@lion/form-core';
+import { Required, Pattern, Validator } from '@lion/form-core';
 import '@lion/form/define';
 import { loadDefaultFeedbackMessages } from '@lion/validate-messages';
 import '@lion/button/define';
@@ -69,15 +68,15 @@ export class WebSeriesForm extends LitElement{
         return html`
         <lion-form>
         <form name="webseries_form" id="webseries_form" @submit = ${this._test}>
-            <lion-input  name="title" label = "Title:" id = "title" class="inputs" placeholder="Title" .modelValue=${'Goblin'} .validators=${[new Required(), new Pattern(/^[A-Za-z. ]+[A-Za-z. ]$/)]} .parser = "${viewValue => viewValue.replace(/^[a-z]/, str => str.toUpperCase())}"></lion-input>
+            <lion-input  name="title" label = "Title:" id = "title" class="inputs" placeholder="Title" .modelValue=${'Goblin'} .validators=${[new Required({}, { getMessage: () => "Please enter a title"}), new NonNumeric()]} .parser = "${viewValue => viewValue.replace(/^[a-z]/, str => str.toUpperCase())}"></lion-input>
             <br><br>
-            <lion-input label = "Directors:" type = "text" id = "directors" name="directors" class="inputs" placeholder="Directors" .validators=${[new Required(), new Pattern(/^[A-Za-z. ]+[A-Za-z. ]$/)]} .parser = "${viewValue => viewValue.replace(/^[a-z]/, str => str.toUpperCase())}"></lion-input>
+            <lion-input label = "Directors:" type = "text" id = "directors" name="directors" class="inputs" placeholder="Directors" .validators=${[new Required({}, { getMessage: () => "Please enter the name of the director/directors"}), new NonNumeric()]} .parser = "${viewValue => viewValue.replace(/^[a-z]/, str => str.toUpperCase())}"></lion-input>
             <br><br>          
             <!--<label for="stars">Stars: </label>-->
-            <lion-input name="stars" label = "Stars:" type = "text" id = "stars" class="inputs" placeholder="Stars" .validators=${[new Required(), new Pattern(/^10$|^[0-9]$|^[0-9]\.[0-9]$/)]}></lion-input>
+            <lion-input name="stars" label = "Stars:" type = "text" id = "stars" class="inputs" placeholder="Stars" .validators=${[new Required({}, { getMessage: () => "Please enter stars"}), new Pattern(/^10$|^[0-9]$|^[0-9]\.[0-9]$/)]}></lion-input>
             <br><br>         
             <label for="streaming platforms">Streaming Platform: </label>
-            <lion-select name="streaming platforms" id= "streaming platforms"  class = "inputs" .validators=${[new Required()]}>
+            <lion-select name="streaming platforms" id= "streaming platforms"  class = "inputs" .validators=${[new Required({}, { getMessage: () => "Please enter the streaming platform"})]}>
             <br>
                 <select slot="input">
                     <option selected hidden value>Please select</option>
@@ -108,8 +107,10 @@ export class WebSeriesForm extends LitElement{
         const director = this.shadowRoot.querySelector('#directors').value;
         const stars = this.shadowRoot.querySelector('#stars').value;
         const select = this.shadowRoot.querySelector('select').value;
+        const re = /\D/;
+        const numeric_re = /^10$|^[0-9]$|^[0-9]\.[0-9]$/;
 
-        if(!this._validator(title)||!this._validator(director)||!this._numericValidator(stars)||select === null || select === ""){
+        if(!re.test(title)||!re.test(director)||!numeric_re.test(stars)||select === null || select === ""){
             msg_div._errorMsg("Please fill all the fields properly");
         }
         else{
@@ -128,23 +129,38 @@ export class WebSeriesForm extends LitElement{
         e.preventDefault();
     }
 
-    _validator(value) {
-        const re = /^[A-Za-z. ]+[A-Za-z. ]$/;
-        if(!re.test(value)){
-            return false;
-        }
-        else{
-            return true;
-        }
-    }
+    // _validator(value) {
+    //     const re = /^[A-Za-z. ]+[A-Za-z. ]$/;
+    //     if(!re.test(value)){
+    //         return false;
+    //     }
+    //     else{
+    //         return true;
+    //     }
+    // }
+    // _numericValidator(value){
+    //     const re = /^10$|^[0-9]$|^[0-9]\.[0-9]$/;
+    //     if(!re.test(value)){
+    //         return false;
+    //     }
+    //     else{
+    //         return true;
+    //     }
+    // }
+}
 
-    _numericValidator(value){
-        const re = /^10$|^[0-9]$|^[0-9]\.[0-9]$/;
-        if(!re.test(value)){
+class NonNumeric extends Validator{
+    execute(modelValue){
+        const re = /\D/;
+        if(re.test(modelValue)){
             return false;
         }
-        else{
-            return true;
-        }
+        return true;
+    }
+    static get validatorName(){
+        return "nonNumeric";
+    }
+    static getMessage(){
+        return "Only non numeric characters are allowed..";
     }
 }

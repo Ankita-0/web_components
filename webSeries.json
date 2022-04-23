@@ -1,0 +1,41 @@
+{
+    "data": [
+        {
+            "Title" : "guardian: the lonely and great god",
+            "Directors" : "Lee Eung-bok, Kwon Hyuk-chan",
+            "Stars" : "Lee Eung-bok, Kwon Hyuk-chan, Gong Yoo, Kim Go-eun, Lee Dong-wook, Yoo In-na, Yook Sung-jae",
+            "Streaming Platform" : "Netflix"
+        },
+        {
+            "Title" : "descendants of the sun",
+            "Directors" : "Lee Eung-bok",
+            "Stars" : "Song Joong-ki, Song Hye-kyo, Jin Goo, Kim Ji-won",
+            "Streaming Platform" : "Netflix"
+        },
+        {
+            "Title" : "money heist", 
+            "Directors" : "Alex Pina",
+            "Stars" : "Úrsula Corberó, Álvaro Morte, Itziar Ituño, Pedro Alonso, Paco Tous, Alba Flores, Miguel Herrán, Jaime Lorente, Esther Acebo, Enrique Arce, María Pedraza, Darko Perić, Kiti Mánver, Hovik Keuchkerian, Luka Peroš, Belén Cuesta, Fernando Cayo, Rodrigo de la Serna, Najwa Nimri",
+            "Streaming Platform" : "Netflix"
+        },
+        {
+            "Title" : "shadow and bone",
+            "Directors" : "Eric Heisserer",
+            "Stars" : "Jessie Mei Li, Archie Renaux, Freddy Carter, Amita Suman, Kit Young, Ben Barnes, Zoë Wanamaker, Lewis Tan, Patrick Gibson, Anna Leong Brophy, Jack Wolfe, Daisy Head, Danielle Galligan, Calahan Skogman",
+            "Streaming Platform" : "Netflix"
+        },
+        {
+            "Title" : "it's okay to not be okay",
+            "Directors" : "Park Shin-woo",
+            "Stars" : "Kim Soo-hyun, Seo Yea-ji, Oh Jung-se, Park Gyu-young",
+            "Streaming Platform" : "Netflix"
+        },
+        {
+            "Title" : "all of us are dead",
+            "Directors" : "Lee Jae-kyoo",
+            "Stars" : "Park Ji-hu, Yoon Chan-young, Cho Yi-hyun, Lomon, Yoo In-soo, Lee Yoo-mi, Kim Byung-chul, Lee Kyu-hyung, Jeon Bae-soo",
+            "Streaming Platform" : "Netflix"
+        }
+    ]
+
+}

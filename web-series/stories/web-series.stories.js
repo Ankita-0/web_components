@@ -3,7 +3,7 @@ import '../src/web-series.js';
 
 export default {
   title: 'WebSeries',
-  component: 'web-series-form>',
+  component: 'web-series',
   argTypes: {
     backgroundColor: { control: 'color' },
   },
@@ -13,8 +13,7 @@ function Template({ title, backgroundColor }) {
 
   return html`
 
-    <web-series-form></web-series-form>
-    <web-series-overview class="DynamicCards"> </web-series-overview>
+  <web-series></web-series>
 
   `;
 }
