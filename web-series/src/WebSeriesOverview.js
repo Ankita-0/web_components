@@ -130,7 +130,6 @@ export class WebSeriesOverview extends LitElement {
         if(this.data!== undefined){
             this.data = [...this.data];
         }
-        var id =0;
         return html`
         <div class = "overview">
             ${this.data.map(series => html`
@@ -154,7 +153,6 @@ export class WebSeriesOverview extends LitElement {
         .then(response => console.log("successfully deleted"))
         .catch(error => console.log(error))
 
-        // e.target.parentElement.remove();
         this._successMsg("Successfully deleted")
     }
 }
