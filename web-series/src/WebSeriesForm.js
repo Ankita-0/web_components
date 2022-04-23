@@ -1,12 +1,12 @@
 import { LitElement, html, css } from 'lit';
-import { WebSeries } from './WebSeries.js';
 import { WebSeriesOverview } from './WebSeriesOverview.js';
 import '@lion/select/define';
 import '@lion/input/define';
-import { Required, Pattern, Validator } from '@lion/form-core';
+import { Required, Validator } from '@lion/form-core';
 import '@lion/form/define';
 import { loadDefaultFeedbackMessages } from '@lion/validate-messages';
 import '@lion/button/define';
+import { ajax } from '@lion/ajax';
 
 export class WebSeriesForm extends LitElement{
     constructor() {
@@ -73,7 +73,7 @@ export class WebSeriesForm extends LitElement{
             <lion-input label = "Directors:" type = "text" id = "directors" name="directors" class="inputs" placeholder="Directors" .validators=${[new Required({}, { getMessage: () => "Please enter the name of the director/directors"}), new NonNumeric()]} .parser = "${viewValue => viewValue.replace(/^[a-z]/, str => str.toUpperCase())}"></lion-input>
             <br><br>          
             <!--<label for="stars">Stars: </label>-->
-            <lion-input name="stars" label = "Stars:" type = "text" id = "stars" class="inputs" placeholder="Stars" .validators=${[new Required({}, { getMessage: () => "Please enter stars"}), new Pattern(/^10$|^[0-9]$|^[0-9]\.[0-9]$/)]}></lion-input>
+            <lion-input name="stars" label = "Stars:" type = "text" id = "stars" class="inputs" placeholder="Stars" .validators=${[new Required({}, { getMessage: () => "Please enter stars"}), new NonNumeric()]} .parser = "${viewValue => viewValue.replace(/^[a-z]/, str => str.toUpperCase())}"></lion-input>
             <br><br>         
             <label for="streaming platforms">Streaming Platform: </label>
             <lion-select name="streaming platforms" id= "streaming platforms"  class = "inputs" .validators=${[new Required({}, { getMessage: () => "Please enter the streaming platform"})]}>
@@ -96,11 +96,6 @@ export class WebSeriesForm extends LitElement{
         `;
     }
 
-    _clickHandler(e){
-        e.target.dispatchEvent(new Event('submit', {bubbles:true,
-        cancelable:true}))
-    }
-
     _test (e) {
         const msg_div = new WebSeriesOverview;
         const title = this.shadowRoot.querySelector('#title').value;
@@ -108,17 +103,20 @@ export class WebSeriesForm extends LitElement{
         const stars = this.shadowRoot.querySelector('#stars').value;
         const select = this.shadowRoot.querySelector('select').value;
         const re = /\D/;
-        const numeric_re = /^10$|^[0-9]$|^[0-9]\.[0-9]$/;
 
-        if(!re.test(title)||!re.test(director)||!numeric_re.test(stars)||select === null || select === ""){
+        if(!re.test(title)||!re.test(director)||!re.test(stars)||select === null || select === ""){
             msg_div._errorMsg("Please fill all the fields properly");
         }
         else{
             const event =new CustomEvent("data", {
                 bubbles:true,
                 composed:true,
-                detail:
-                new WebSeries(title, director, stars, select)
+                detail: {
+                    "Title": title,
+                    "Directors": director,
+                    "Stars": stars,
+                    "Streaming_Platform": select
+                }
             });
             this.shadowRoot.querySelector('#webseries_form').dispatchEvent(event)
 
@@ -128,25 +126,6 @@ export class WebSeriesForm extends LitElement{
         }
         e.preventDefault();
     }
-
-    // _validator(value) {
-    //     const re = /^[A-Za-z. ]+[A-Za-z. ]$/;
-    //     if(!re.test(value)){
-    //         return false;
-    //     }
-    //     else{
-    //         return true;
-    //     }
-    // }
-    // _numericValidator(value){
-    //     const re = /^10$|^[0-9]$|^[0-9]\.[0-9]$/;
-    //     if(!re.test(value)){
-    //         return false;
-    //     }
-    //     else{
-    //         return true;
-    //     }
-    // }
 }
 
 class NonNumeric extends Validator{

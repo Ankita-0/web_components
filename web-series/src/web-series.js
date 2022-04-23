@@ -3,7 +3,6 @@ import { WebSeriesOverview } from './WebSeriesOverview.js';
 import { CardComponent } from './CardComponent.js';
 import '@lion/tabs/define';
 import { LitElement, html, css } from 'lit';
-import { WebSeries } from './WebSeries.js';
 import { ajax } from '@lion/ajax';
 
 class Webseries extends LitElement {
@@ -16,16 +15,8 @@ class Webseries extends LitElement {
     }
     constructor () {
         super();
-        this.series = [new WebSeries("guardian: the lonely and great god", "Lee Eung-bok, Kwon Hyuk-chan", 
-        8.6,"Netflix"),
-        new WebSeries("descendants of the sun","Lee Eung-bok",9.8,"Netflix"), 
-        new WebSeries("money heist", "Lee Eung-bok, Kwon Hyuk-chan", 
-        8.2,"Netflix"),
-        new WebSeries("shadow and bone", "Eric Heisserer", 
-        7.7,"Netflix"),
-        new WebSeries("it's okay to not be okay", "Park Shin-woo", 
-        8.7,"Netflix"),
-        new WebSeries("all of us are dead","Lee Jae-kyoo",7.5,"Netflix")];
+        this.series = [];
+        this._fetchSeries();
     }
 
     connectedCallback(){
@@ -59,19 +50,15 @@ class Webseries extends LitElement {
         `;  
     }
 
-    fetchSeries () {
-        ajax.fetch("http://localhost:3000/data", 
-        {
-            method:"GET",
-            headers: {
-            //     "Access-Control-Allow-Origin" : ["http://localhost:8084"]
-                
-            // 
-            "Referrer-Policy": "no-referrer-when-downgrade"
-        }
-        }
-        )
-        .then(response => {console.log(response)})
+    _fetchSeries () {
+        ajax.fetch("http://localhost:3000/data")
+        .then(response => {
+            response.json().then((res)=>{
+                Object.entries(res).flatMap((elem) => elem[1]).forEach(wSeries => {
+                    this.series = [...this.series, wSeries]
+                })
+            })
+        })
         .catch(error => console.log(error));
     }
 

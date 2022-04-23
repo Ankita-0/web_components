@@ -1,5 +1,4 @@
 import { LitElement, html, css } from 'lit';
-import { WebSeries } from './WebSeries.js';
 import '@lion/button/define';
 
 export class WebSeriesOverview extends LitElement {
@@ -125,7 +124,11 @@ export class WebSeriesOverview extends LitElement {
     }
 
 
-    render() {
+    render() 
+    {
+        if(this.data!== undefined){
+            this.data = [...this.data];
+        }
         return html`
         <div class = "overview">
             ${this.data.map(series => html`
