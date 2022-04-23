@@ -39,14 +39,13 @@ class Webseries extends LitElement {
         <lion-tabs>
           <button slot="tab" class = "formbtn">Web Series Form</button>
           <p slot="panel">
-            <web-series-form  @data = ${this._addSeries}></web-series-form>
+            <web-series-form></web-series-form>
             </p>
           <button slot="tab" class = "overviewbtn">Web Series Overview</button>
             <p slot="panel">       
                 <web-series-overview .data=${this.series} class="DynamicCards"> </web-series-overview>
             </p>
         </lion-tabs>
-        <button id="test" @click = ${this.fetchSeries}> get </button>
         `;  
     }
 

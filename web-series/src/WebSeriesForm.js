@@ -108,23 +108,42 @@ export class WebSeriesForm extends LitElement{
             msg_div._errorMsg("Please fill all the fields properly");
         }
         else{
-            const event =new CustomEvent("data", {
-                bubbles:true,
-                composed:true,
-                detail: {
+
+            ajax.fetch('http://localhost:3000/data', {
+                method: 'POST',
+                headers : {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ 
                     "Title": title,
                     "Directors": director,
                     "Stars": stars,
-                    "Streaming_Platform": select
-                }
-            });
-            this.shadowRoot.querySelector('#webseries_form').dispatchEvent(event)
+                    "Streaming_Platform": select }
+                    ),
+                })
+                .then((response) => {
+                console.log("success")
+                alert("Webseries added: "+ title)
+            })
+                .catch(error => console.log(error));
 
-            this.shadowRoot.querySelector('#webseries_form').reset();
+            // const event =new CustomEvent("data", {
+            //     bubbles:true,
+            //     composed:true,
+            //     detail: {
+            //         "Title": title,
+            //         "Directors": director,
+            //         "Stars": stars,
+            //         "Streaming_Platform": select
+            //     }
+            // });
+            // this.shadowRoot.querySelector('#webseries_form').dispatchEvent(event)
+
+             this.shadowRoot.querySelector('#webseries_form').reset();
             // Array.from(this.shadowRoot.querySelectorAll("input")).forEach(input => input.value="");
             // this.shadowRoot.querySelector("select").value ="";
         }
-        e.preventDefault();
+        //e.preventDefault();
     }
 }
 
