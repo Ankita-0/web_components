@@ -4,8 +4,19 @@ import { CardComponent } from './CardComponent.js';
 import '@lion/tabs/define';
 import { LitElement, html, css } from 'lit';
 import { ajax } from '@lion/ajax';
+import { localize, LocalizeMixin } from '@lion/localize';
 
-class Webseries extends LitElement {
+class Webseries extends LocalizeMixin(LitElement) {
+
+    static get localizeNamespaces(){
+        return [
+            {
+                'lang-demo': locale => import(`../translations/${locale}.js`)
+            },
+            ...super.localizeNamespaces
+        ];
+    }
+
     static get properties(){
         return{
             series : {
@@ -48,6 +59,12 @@ class Webseries extends LitElement {
                 <web-series-overview .data=${this.series} class="DynamicCards"> </web-series-overview>
             </p>
         </lion-tabs>
+        <div class = "switch_lang">
+        ${localize.msg('lang-demo:translateTo')} :: 
+            <button @click = ${this._switchToEnglish}> English </button>
+            <button @click = ${this._switchToFrench}> French </button>
+            <button @click = ${this._switchToGerman}> German </button>
+        </div>
         `;  
     }
 
@@ -66,6 +83,18 @@ class Webseries extends LitElement {
             })
         })
         .catch(error => console.log(error));
+    }
+
+    _switchToEnglish(e){
+        localize.locale = 'en-GB';
+    }
+
+    _switchToGerman(e){
+        localize.locale = 'de-DE';
+    }
+
+    _switchToFrench(e){
+        localize.locale = 'fr-FR';
     }
 }
 

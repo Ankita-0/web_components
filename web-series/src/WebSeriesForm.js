@@ -9,7 +9,7 @@ import '@lion/button/define';
 import { ajax } from '@lion/ajax';
 import { localize, LocalizeMixin } from '@lion/localize'
 
-export class WebSeriesForm extends LitElement{
+export class WebSeriesForm extends LocalizeMixin(LitElement){
     constructor() {
         super();
     }
@@ -17,7 +17,7 @@ export class WebSeriesForm extends LitElement{
     static get localizeNamespaces(){
         return [
             {
-                'lit-html-example': locale => import(`../translations/${locale}.js`)
+                'lang-demo': locale => import(`../translations/${locale}.js`)
             },
             ...super.localizeNamespaces
         ];
@@ -79,14 +79,14 @@ export class WebSeriesForm extends LitElement{
         return html`
         <lion-form>
         <form name="webseries_form" id="webseries_form" @submit = ${this._test}>
-            <lion-input  name="title" label = "Title:" id = "title" class="inputs" placeholder="Title" .validators=${[new Required({}, { getMessage: () => "Please enter a title"}), new NonNumeric()]} .parser = "${viewValue => viewValue.replace(/^[a-z]/, str => str.toUpperCase())}"></lion-input>
+            <lion-input  name="title" label = ${localize.msg('lang-demo:title')}: id = "title" class="inputs" placeholder=${localize.msg('lang-demo:title')} .validators=${[new Required({}, { getMessage: () => "Please enter a title"}), new NonNumeric()]} .parser = "${viewValue => viewValue.replace(/^[a-z]/, str => str.toUpperCase())}"></lion-input>
             <br><br>
-            <lion-input label = "Directors:" type = "text" id = "directors" name="directors" class="inputs" placeholder="Directors" .validators=${[new Required({}, { getMessage: () => "Please enter the name of the director/directors"}), new NonNumeric()]} .parser = "${viewValue => viewValue.replace(/^[a-z]/, str => str.toUpperCase())}"></lion-input>
+            <lion-input label = ${localize.msg('lang-demo:directors')}: type = "text" id = "directors" name="directors" class="inputs" placeholder=${localize.msg('lang-demo:directors')} .validators=${[new Required({}, { getMessage: () => "Please enter the name of the director/directors"}), new NonNumeric()]} .parser = "${viewValue => viewValue.replace(/^[a-z]/, str => str.toUpperCase())}"></lion-input>
             <br><br>          
             <!--<label for="stars">Stars: </label>-->
-            <lion-input name="stars" label = "Stars:" type = "text" id = "stars" class="inputs" placeholder="Stars" .validators=${[new Required({}, { getMessage: () => "Please enter stars"}), new NonNumeric()]} .parser = "${viewValue => viewValue.replace(/^[a-z]/, str => str.toUpperCase())}"></lion-input>
+            <lion-input name="stars" label = ${localize.msg('lang-demo:stars')}: type = "text" id = "stars" class="inputs" placeholder=${localize.msg('lang-demo:stars')} .validators=${[new Required({}, { getMessage: () => "Please enter stars"}), new NonNumeric()]} .parser = "${viewValue => viewValue.replace(/^[a-z]/, str => str.toUpperCase())}"></lion-input>
             <br><br>         
-            <label for="streaming platforms">Streaming Platform: </label>
+            <label for="streaming platforms">${localize.msg('lang-demo:streamingPlatform')}:</label>
             <lion-select name="streaming platforms" id= "streaming platforms"  class = "inputs" .validators=${[new Required({}, { getMessage: () => "Please enter the streaming platform"})]}>
             <br>
                 <select slot="input">
@@ -100,7 +100,7 @@ export class WebSeriesForm extends LitElement{
             <br><br>
 
             <lion-button-submit id="add_button"><strong>
-            Add
+            ${localize.msg('lang-demo:addbtn')}
             </strong></lion-button-submit>
             </form>
             </lion-form>

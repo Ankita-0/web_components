@@ -1,8 +1,19 @@
 import { LitElement, html, css } from 'lit';
 import '@lion/button/define';
 import { ajax } from '@lion/ajax';
+import { localize, LocalizeMixin } from '@lion/localize'
 
-export class WebSeriesOverview extends LitElement {
+export class WebSeriesOverview extends LocalizeMixin(LitElement) {
+
+    static get localizeNamespaces(){
+        return [
+            {
+                'lang-demo': locale => import(`../translations/${locale}.js`)
+            },
+            ...super.localizeNamespaces
+        ];
+    }
+
     static get properties(){
         return {
             data:{type:Array},
@@ -136,7 +147,7 @@ export class WebSeriesOverview extends LitElement {
                     <web-series-card .data=${series}>
                     </web-series-card>
                     <lion-button class = "Delete-button" id = "${series.id}" @click = ${this._deleteCard}> 
-                    Delete 
+                    ${localize.msg('lang-demo:deletebtn')} 
                     </lion-button>
                 </div>             
             `)}

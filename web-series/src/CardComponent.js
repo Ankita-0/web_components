@@ -1,6 +1,16 @@
 import { LitElement, html, css } from 'lit';
+import { localize, LocalizeMixin } from '@lion/localize'
 
-export class CardComponent extends LitElement {
+export class CardComponent extends LocalizeMixin(LitElement) {
+
+    static get localizeNamespaces(){
+        return [
+            {
+                'lang-demo': locale => import(`../translations/${locale}.js`)
+            },
+            ...super.localizeNamespaces
+        ];
+    }
 
     static get properties() {
         return {
@@ -82,13 +92,13 @@ export class CardComponent extends LitElement {
     render() {
        return html`
        <div class = "card">
-            <h2 id = "card_heading"><b>Title: </b>${this.data.Title.toUpperCase()}</h2>
+            <h2 id = "card_heading"><b>${localize.msg('lang-demo:title')}: </b>${this.data.Title.toUpperCase()}</h2>
             <p id = "card_para">
-            <b>Directors:</b>${this.data.Directors}
+            <b>${localize.msg('lang-demo:directors')}: </b>${this.data.Directors}
             <br>
-            <b>Stars:</b>${this.data.Stars}
+            <b>${localize.msg('lang-demo:stars')}: </b>${this.data.Stars}
             <br>
-            <b>Streaming Platform:</b>${this.data.Streaming_Platform}</p>
+            <b>${localize.msg('lang-demo:streamingPlatform')}: </b>${this.data.Streaming_Platform}</p>
        </div>
        `;   
     }
