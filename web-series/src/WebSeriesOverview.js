@@ -124,7 +124,6 @@ export class WebSeriesOverview extends LitElement {
         setTimeout(() => document.querySelector("body").removeChild(document.querySelector("#error_div")), 4000)    
     }
 
-
     render() 
     {
         if(this.data!== undefined){
@@ -150,7 +149,7 @@ export class WebSeriesOverview extends LitElement {
         ajax.fetch('http://localhost:3000/data/'+e.target.id, {
             method:'DELETE'
         })
-        .then(response => console.log("successfully deleted"))
+        .then(response => console.log("successfully deleted"+ response))
         .catch(error => console.log(error))
 
         this._successMsg("Successfully deleted")

@@ -1,14 +1,20 @@
 # web_components
 
-3.<br>
-a)generate application on local using open wc generator <br>
-b)move the templates created in previous assignments to the application<br>
-c)application should have the following components<br>
- -i)web-series-form: should display the input fields<br>
- -ii)web-series-overview: should display all the cards<br>
- 
- 4.<br>
- a)develop web component to display web series details as cards<br>
- b)name it as web-series-card<br>
- c)use styling from previous assignments<br>
- d)replace cards in web-series-overview with this component<br>
+# Setting up a local json server
+
+1) Install the json-server => npm install -g json-server
+
+2) Create a .json file and save the data in it.
+
+3) Run the server => json-server --watch ${filename}.json
+
+4) Data can be accessible on http://localhost:3000/data
+
+# JWT token
+
+Hardcoding the token-
+=> Visit 'https://jwt.io/' and create your own JWT token.
+
+=> Set the token in session/local storage.
+
+=> Retrieve the token from session/local storage and sent it in the headers of the request at the time of sending the request. 
