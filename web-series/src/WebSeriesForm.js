@@ -7,10 +7,20 @@ import '@lion/form/define';
 import { loadDefaultFeedbackMessages } from '@lion/validate-messages';
 import '@lion/button/define';
 import { ajax } from '@lion/ajax';
+import { localize, LocalizeMixin } from '@lion/localize'
 
 export class WebSeriesForm extends LitElement{
     constructor() {
         super();
+    }
+    
+    static get localizeNamespaces(){
+        return [
+            {
+                'lit-html-example': locale => import(`../translations/${locale}.js`)
+            },
+            ...super.localizeNamespaces
+        ];
     }
 
     static get styles() {
