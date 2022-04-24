@@ -93,3 +93,5 @@ export class CardComponent extends LitElement {
        `;   
     }
 }
+
+customElements.define('web-series-card', CardComponent);

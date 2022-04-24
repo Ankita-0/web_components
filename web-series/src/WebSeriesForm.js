@@ -63,7 +63,7 @@ export class WebSeriesForm extends LitElement{
         }
         `;
     }
-    
+
     render(){
         loadDefaultFeedbackMessages();
         return html`
@@ -143,3 +143,5 @@ class NonNumeric extends Validator{
         return "Only non numeric characters are allowed..";
     }
 }
+
+customElements.define('web-series-form', WebSeriesForm);

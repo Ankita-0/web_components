@@ -155,3 +155,5 @@ export class WebSeriesOverview extends LitElement {
         this._successMsg("Successfully deleted")
     }
 }
+
+customElements.define('web-series-overview', WebSeriesOverview);
