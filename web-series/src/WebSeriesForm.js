@@ -1,5 +1,4 @@
 import { LitElement, html, css } from 'lit';
-import { WebSeriesOverview } from './WebSeriesOverview.js';
 import '@lion/select/define';
 import '@lion/input/define';
 import { Required, Validator } from '@lion/form-core';
@@ -7,7 +6,7 @@ import '@lion/form/define';
 import { loadDefaultFeedbackMessages } from '@lion/validate-messages';
 import '@lion/button/define';
 import { ajax } from '@lion/ajax';
-import { localize, LocalizeMixin } from '@lion/localize'
+import { localize, LocalizeMixin } from '@lion/localize';
 
 export class WebSeriesForm extends LocalizeMixin(LitElement){
     constructor() {
@@ -19,7 +18,7 @@ export class WebSeriesForm extends LocalizeMixin(LitElement){
             {
                 'lang-demo': locale => import(`../translations/${locale}.js`)
             },
-            ...super.localizeNamespaces
+            ...super.localizeNamespaces,
         ];
     }
 
@@ -108,7 +107,6 @@ export class WebSeriesForm extends LocalizeMixin(LitElement){
     }
 
     _test (e) {
-        const msg_div = new WebSeriesOverview;
         const series_data = { 
             "Title": this.shadowRoot.querySelector('#title').value,
             "Directors": this.shadowRoot.querySelector('#directors').value,
@@ -118,7 +116,7 @@ export class WebSeriesForm extends LocalizeMixin(LitElement){
         const re = /\D/;
 
         if(!re.test(series_data.Title)||!re.test(series_data.Directors)||!re.test(series_data.Stars)||series_data.Streaming_Platform === null || series_data.Streaming_Platform === ""){
-            msg_div._errorMsg("Please fill all the fields properly");
+            alert("Please fill all the fields properly");
         }
         else{
             ajax.fetch('http://localhost:3000/data', {
@@ -130,7 +128,7 @@ export class WebSeriesForm extends LocalizeMixin(LitElement){
                 })
                 .then((response) => {
                 console.log("success")
-                msg_div._successMsg("Webseries added successfully!")
+                alert("Webseries added successfully!")
             })
             .catch(error => console.log(error));
             this.shadowRoot.querySelector('#webseries_form').reset();

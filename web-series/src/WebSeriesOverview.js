@@ -84,56 +84,6 @@ export class WebSeriesOverview extends LocalizeMixin(LitElement) {
         }
     `;
     }
-    
-    _successMsg(msg) {
-        const success_div = document.querySelector("body")
-        .insertBefore(document.createElement("div"), document.querySelector("#menu"));
-
-        success_div.id = "success_div";
-
-        success_div.innerHTML = `
-        <style>
-            #success_div {
-                color : white;
-                background-color: green;
-                text-align: center;
-                height: 20px;
-                width:100%;
-                position: fixed;
-                /*z-index:1;*/
-            }
-        </style>
-        ${msg}
-        `;
-
-        //displaying the msg for 4 sec
-        setTimeout(() => document.querySelector("body").removeChild(document.querySelector("#success_div")), 4000)
-    }
-
-    _errorMsg(msg) {
-        const error_div = document.querySelector("body")
-        .insertBefore(document.createElement("div"), document.querySelector("#menu"));
-
-        error_div.id = "error_div";
-
-        error_div.innerHTML = `
-        <style>
-            #error_div {
-                color : white;
-                background-color: red;
-                text-align: center;
-                height: 20px;
-                width:100%;
-                position: fixed;
-                /*z-index:1;*/
-            }
-        </style>
-        ${msg}
-        `;
-
-        //displaying the error msg for 4 sec
-        setTimeout(() => document.querySelector("body").removeChild(document.querySelector("#error_div")), 4000)    
-    }
 
     render() 
     {
@@ -162,8 +112,7 @@ export class WebSeriesOverview extends LocalizeMixin(LitElement) {
         })
         .then(response => console.log("successfully deleted"+ response))
         .catch(error => console.log(error))
-
-        this._successMsg("Successfully deleted")
+        alert("Successfully deleted")
     }
 }
 
