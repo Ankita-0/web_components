@@ -1,5 +1,4 @@
 import { LitElement, html, css } from 'lit';
-import { WebSeriesOverview } from './WebSeriesOverview.js';
 import '@lion/select/define';
 import '@lion/input/define';
 import { Required, Validator } from '@lion/form-core';
@@ -98,7 +97,6 @@ export class WebSeriesForm extends LitElement{
     }
 
     _test (e) {
-        const msg_div = new WebSeriesOverview;
         const series_data = { 
             "Title": this.shadowRoot.querySelector('#title').value,
             "Directors": this.shadowRoot.querySelector('#directors').value,
@@ -108,7 +106,7 @@ export class WebSeriesForm extends LitElement{
         const re = /\D/;
 
         if(!re.test(series_data.Title)||!re.test(series_data.Directors)||!re.test(series_data.Stars)||series_data.Streaming_Platform === null || series_data.Streaming_Platform === ""){
-            msg_div._errorMsg("Please fill all the fields properly");
+            alert("Please fill all the fields properly");
         }
         else{
             ajax.fetch('http://localhost:3000/data', {
@@ -120,7 +118,7 @@ export class WebSeriesForm extends LitElement{
                 })
                 .then((response) => {
                 console.log("success")
-                msg_div._successMsg("Webseries added successfully!")
+                alert("Webseries added successfully!");
             })
             .catch(error => console.log(error));
             this.shadowRoot.querySelector('#webseries_form').reset();

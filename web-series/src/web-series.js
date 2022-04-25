@@ -1,6 +1,3 @@
-import { WebSeriesForm } from './WebSeriesForm.js';
-import { WebSeriesOverview } from './WebSeriesOverview.js';
-import { CardComponent } from './CardComponent.js';
 import '@lion/tabs/define';
 import { LitElement, html, css } from 'lit';
 import { ajax } from '@lion/ajax';
