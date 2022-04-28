@@ -1,8 +1,9 @@
 import { html } from 'lit';
+import { stub } from 'sinon';
 import { fixture, expect } from '@open-wc/testing';
 
 import '../src/WebSeriesForm.js';
-
+//const sinon = require('sinon');
 describe('WebSeriesForm', () => {
     let element;
     beforeEach(async () => {
@@ -27,7 +28,12 @@ describe('WebSeriesForm', () => {
         expect(element.shadowRoot.querySelector('select').value).to.equal("");
     })
 
-    
+    it('calls add function when a button is clicked', () => {
+      const _addStub = stub(element, '_add');
+      element.requestUpdate();
+      element.shadowRoot.querySelector("lion-button-submit").click();
+      expect(_addStub).to.have.callCount(1);
+    });
 
 });
   

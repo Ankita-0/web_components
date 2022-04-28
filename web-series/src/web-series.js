@@ -58,9 +58,9 @@ class Webseries extends LocalizeMixin(LitElement) {
         </lion-tabs>
         <div class = "switch_lang">
         ${localize.msg('lang-demo:translateTo')} :: 
-            <button @click = ${this._switchToEnglish}> English </button>
-            <button @click = ${this._switchToFrench}> French </button>
-            <button @click = ${this._switchToGerman}> German </button>
+            <lion-button id="en" @click = ${()=>this._switchToEnglish()}> English </lion-button>
+            <lion-button id="fr" @click = ${()=>this._switchToFrench()}> French </lion-button>
+            <lion-button id="de" @click = ${()=>this._switchToGerman()}> German </lion-button>
         </div>
         `;  
     }
@@ -82,17 +82,17 @@ class Webseries extends LocalizeMixin(LitElement) {
         .catch(error => console.log(error));
     }
 
-    _switchToEnglish(e){
+    _switchToEnglish(){
         localize.locale = 'en-GB';
     }
 
-    _switchToGerman(e){
+    _switchToGerman(){
         localize.locale = 'de-DE';
     }
 
-    _switchToFrench(e){
+    _switchToFrench(){
         localize.locale = 'fr-FR';
     }
 }
-
+        
 customElements.define('web-series', Webseries);

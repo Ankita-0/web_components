@@ -12,8 +12,8 @@ describe('CardComponent', () => {
         "Stars": "Song Joong-ki, Song Hye-kyo, Jin Goo, Kim Ji-won",
         "Streaming Platform": "Netflix"
       }
+      
     beforeEach(async () => {
-
       element = await fixture(html`<web-series-card .data = ${series}></web-series-card>`);
     });
 
