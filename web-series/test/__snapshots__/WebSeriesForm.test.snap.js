@@ -3,11 +3,11 @@ export const snapshots = {};
 
 snapshots["WebSeriesForm has a static shadow dom"] = 
 `<lion-form
-  aria-describedby="help-text-lion-form-bikvh8t3ql feedback-lion-form-bikvh8t3ql"
+  aria-describedby="help-text-lion-form-km7cfsxvpg feedback-lion-form-km7cfsxvpg"
   aria-invalid="true"
-  aria-labelledby="label-lion-form-bikvh8t3ql"
+  aria-labelledby="label-lion-form-km7cfsxvpg"
   class="form-control"
-  id="lion-form-bikvh8t3ql"
+  id="lion-form-km7cfsxvpg"
   name=""
   shows-feedback-for="error"
 >
@@ -25,30 +25,30 @@ snapshots["WebSeriesForm has a static shadow dom"] =
       type="text"
     >
       <label
-        for="lion-input-9mmtovcjzp"
-        id="label-lion-input-9mmtovcjzp"
+        for="lion-input-ynf9ejgb4y"
+        id="label-lion-input-ynf9ejgb4y"
         slot="label"
       >
         Title:
       </label>
       <div
-        id="help-text-lion-input-9mmtovcjzp"
+        id="help-text-lion-input-ynf9ejgb4y"
         slot="help-text"
       >
       </div>
       <lion-validation-feedback
         data-tag-name="lion-validation-feedback"
-        id="feedback-lion-input-9mmtovcjzp"
+        id="feedback-lion-input-ynf9ejgb4y"
         slot="feedback"
       >
       </lion-validation-feedback>
       <input
-        aria-describedby="help-text-lion-input-9mmtovcjzp feedback-lion-input-9mmtovcjzp feedback-lion-form-bikvh8t3ql help-text-lion-form-bikvh8t3ql"
+        aria-describedby="help-text-lion-input-ynf9ejgb4y feedback-lion-input-ynf9ejgb4y feedback-lion-form-km7cfsxvpg help-text-lion-form-km7cfsxvpg"
         aria-invalid="false"
-        aria-labelledby="label-lion-input-9mmtovcjzp label-lion-form-bikvh8t3ql"
+        aria-labelledby="label-lion-input-ynf9ejgb4y label-lion-form-km7cfsxvpg"
         aria-required="true"
         class="form-control"
-        id="lion-input-9mmtovcjzp"
+        id="lion-input-ynf9ejgb4y"
         name="title"
         placeholder="Title"
         slot="input"
@@ -67,30 +67,30 @@ snapshots["WebSeriesForm has a static shadow dom"] =
       type="text"
     >
       <label
-        for="lion-input-3igfut3kyc"
-        id="label-lion-input-3igfut3kyc"
+        for="lion-input-p89vi2ilqy"
+        id="label-lion-input-p89vi2ilqy"
         slot="label"
       >
         Directors:
       </label>
       <div
-        id="help-text-lion-input-3igfut3kyc"
+        id="help-text-lion-input-p89vi2ilqy"
         slot="help-text"
       >
       </div>
       <lion-validation-feedback
         data-tag-name="lion-validation-feedback"
-        id="feedback-lion-input-3igfut3kyc"
+        id="feedback-lion-input-p89vi2ilqy"
         slot="feedback"
       >
       </lion-validation-feedback>
       <input
-        aria-describedby="help-text-lion-input-3igfut3kyc feedback-lion-input-3igfut3kyc feedback-lion-form-bikvh8t3ql help-text-lion-form-bikvh8t3ql"
+        aria-describedby="help-text-lion-input-p89vi2ilqy feedback-lion-input-p89vi2ilqy feedback-lion-form-km7cfsxvpg help-text-lion-form-km7cfsxvpg"
         aria-invalid="false"
-        aria-labelledby="label-lion-input-3igfut3kyc label-lion-form-bikvh8t3ql"
+        aria-labelledby="label-lion-input-p89vi2ilqy label-lion-form-km7cfsxvpg"
         aria-required="true"
         class="form-control"
-        id="lion-input-3igfut3kyc"
+        id="lion-input-p89vi2ilqy"
         name="directors"
         placeholder="Directors"
         slot="input"
@@ -109,30 +109,30 @@ snapshots["WebSeriesForm has a static shadow dom"] =
       type="text"
     >
       <label
-        for="lion-input-yun7om81mb"
-        id="label-lion-input-yun7om81mb"
+        for="lion-input-w5xg3qzy03"
+        id="label-lion-input-w5xg3qzy03"
         slot="label"
       >
         Stars:
       </label>
       <div
-        id="help-text-lion-input-yun7om81mb"
+        id="help-text-lion-input-w5xg3qzy03"
         slot="help-text"
       >
       </div>
       <lion-validation-feedback
         data-tag-name="lion-validation-feedback"
-        id="feedback-lion-input-yun7om81mb"
+        id="feedback-lion-input-w5xg3qzy03"
         slot="feedback"
       >
       </lion-validation-feedback>
       <input
-        aria-describedby="help-text-lion-input-yun7om81mb feedback-lion-input-yun7om81mb feedback-lion-form-bikvh8t3ql help-text-lion-form-bikvh8t3ql"
+        aria-describedby="help-text-lion-input-w5xg3qzy03 feedback-lion-input-w5xg3qzy03 feedback-lion-form-km7cfsxvpg help-text-lion-form-km7cfsxvpg"
         aria-invalid="false"
-        aria-labelledby="label-lion-input-yun7om81mb label-lion-form-bikvh8t3ql"
+        aria-labelledby="label-lion-input-w5xg3qzy03 label-lion-form-km7cfsxvpg"
         aria-required="true"
         class="form-control"
-        id="lion-input-yun7om81mb"
+        id="lion-input-w5xg3qzy03"
         name="stars"
         placeholder="Stars"
         slot="input"
@@ -152,12 +152,12 @@ snapshots["WebSeriesForm has a static shadow dom"] =
     >
       <br>
       <select
-        aria-describedby="help-text-lion-select-v25x3cvj1v feedback-lion-select-v25x3cvj1v feedback-lion-form-bikvh8t3ql help-text-lion-form-bikvh8t3ql"
+        aria-describedby="help-text-lion-select-ipmv8icj31 feedback-lion-select-ipmv8icj31 feedback-lion-form-km7cfsxvpg help-text-lion-form-km7cfsxvpg"
         aria-invalid="false"
-        aria-labelledby="label-lion-select-v25x3cvj1v label-lion-form-bikvh8t3ql"
+        aria-labelledby="label-lion-select-ipmv8icj31 label-lion-form-km7cfsxvpg"
         aria-required="true"
         class="form-control"
-        id="lion-select-v25x3cvj1v"
+        id="lion-select-ipmv8icj31"
         name="streaming platforms"
         slot="input"
       >
@@ -182,19 +182,19 @@ snapshots["WebSeriesForm has a static shadow dom"] =
         </option>
       </select>
       <label
-        for="lion-select-v25x3cvj1v"
-        id="label-lion-select-v25x3cvj1v"
+        for="lion-select-ipmv8icj31"
+        id="label-lion-select-ipmv8icj31"
         slot="label"
       >
       </label>
       <div
-        id="help-text-lion-select-v25x3cvj1v"
+        id="help-text-lion-select-ipmv8icj31"
         slot="help-text"
       >
       </div>
       <lion-validation-feedback
         data-tag-name="lion-validation-feedback"
-        id="feedback-lion-select-v25x3cvj1v"
+        id="feedback-lion-select-ipmv8icj31"
         slot="feedback"
       >
       </lion-validation-feedback>
@@ -223,19 +223,19 @@ snapshots["WebSeriesForm has a static shadow dom"] =
     </div>
   </form>
   <label
-    for="lion-form-bikvh8t3ql"
-    id="label-lion-form-bikvh8t3ql"
+    for="lion-form-km7cfsxvpg"
+    id="label-lion-form-km7cfsxvpg"
     slot="label"
   >
   </label>
   <div
-    id="help-text-lion-form-bikvh8t3ql"
+    id="help-text-lion-form-km7cfsxvpg"
     slot="help-text"
   >
   </div>
   <lion-validation-feedback
     data-tag-name="lion-validation-feedback"
-    id="feedback-lion-form-bikvh8t3ql"
+    id="feedback-lion-form-km7cfsxvpg"
     slot="feedback"
   >
   </lion-validation-feedback>

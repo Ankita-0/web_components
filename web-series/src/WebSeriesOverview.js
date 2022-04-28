@@ -111,8 +111,8 @@ export class WebSeriesOverview extends LocalizeMixin(LitElement) {
             method:'DELETE'
         })
         .then(response => console.log("successfully deleted"+ response))
-        .catch(error => console.log(error))
-        alert("Successfully deleted")
+        .catch(error => console.log(error));
+        alert("Successfully deleted");
     }
 }
 

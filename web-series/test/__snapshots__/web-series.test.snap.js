@@ -4,10 +4,10 @@ export const snapshots = {};
 snapshots["WebSeries has a static shadow dom"] = 
 `<lion-tabs selected-index="0">
   <button
-    aria-controls="panel-y0nm7jcr3b"
+    aria-controls="panel-ry4056uad4"
     aria-selected="true"
     class="formbtn"
-    id="button-y0nm7jcr3b"
+    id="button-ry4056uad4"
     role="tab"
     selected="true"
     slot="tab"
@@ -16,8 +16,8 @@ snapshots["WebSeries has a static shadow dom"] =
     Web Series Form
   </button>
   <p
-    aria-labelledby="button-y0nm7jcr3b"
-    id="panel-y0nm7jcr3b"
+    aria-labelledby="button-ry4056uad4"
+    id="panel-ry4056uad4"
     role="tabpanel"
     selected="true"
     slot="panel"
@@ -26,10 +26,10 @@ snapshots["WebSeries has a static shadow dom"] =
     </web-series-form>
   </p>
   <button
-    aria-controls="panel-5wys0rlrae"
+    aria-controls="panel-tq88119zn6"
     aria-selected="false"
     class="overviewbtn"
-    id="button-5wys0rlrae"
+    id="button-tq88119zn6"
     role="tab"
     slot="tab"
     tabindex="-1"
@@ -37,8 +37,8 @@ snapshots["WebSeries has a static shadow dom"] =
     Web Series Overview
   </button>
   <p
-    aria-labelledby="button-5wys0rlrae"
-    id="panel-5wys0rlrae"
+    aria-labelledby="button-tq88119zn6"
+    id="panel-tq88119zn6"
     role="tabpanel"
     slot="panel"
   >
@@ -48,15 +48,15 @@ snapshots["WebSeries has a static shadow dom"] =
 </lion-tabs>
 <div class="switch_lang">
   Translate To ::
-  <button>
+  <lion-button id="en">
     English
-  </button>
-  <button>
+  </lion-button>
+  <lion-button id="fr">
     French
-  </button>
-  <button>
+  </lion-button>
+  <lion-button id="de">
     German
-  </button>
+  </lion-button>
 </div>
 `;
 /* end snapshot WebSeries has a static shadow dom */

@@ -1,6 +1,5 @@
 import { html } from 'lit';
 import { fixture, expect } from '@open-wc/testing';
-
 import '../src/CardComponent.js';
 
 describe('CardComponent', () => {
@@ -19,6 +18,10 @@ describe('CardComponent', () => {
 
     it('has a static shadow dom', async () => {
       expect(element.shadowRoot.innerHTML).to.equalSnapshot();
+    })
+
+    it('should have a property with some data in it', ()=> {
+      expect(element).to.have.property('data').to.deep.equal(series);
     })
   
 });

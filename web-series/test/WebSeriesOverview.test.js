@@ -36,9 +36,10 @@ describe('WebSeriesOverview', () => {
       //expect(element.getAttribute("class")).to.equal('DynamicCards');
     })
 
-    it('calls deleteCard function when a button is clicked', () => {
+    it('calls deleteCard function when a button is clicked', async() => {
       const _deleteCardStub = stub(element, '_deleteCard');
       element.requestUpdate();
+      await element.updateComplete;
       element.shadowRoot.querySelector(".Delete-button").click();
       expect(_deleteCardStub).to.have.callCount(1);
     });
