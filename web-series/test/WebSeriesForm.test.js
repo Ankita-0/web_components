@@ -1,6 +1,6 @@
 import { html } from 'lit';
 import { stub } from 'sinon';
-import { fixture, expect } from '@open-wc/testing';
+import { fixture, expect, triggerFocusFor, triggerBlurFor } from '@open-wc/testing';
 import '../src/WebSeriesForm.js';
 
 describe('WebSeriesForm', () => {
@@ -39,12 +39,6 @@ describe('WebSeriesForm', () => {
       expect(element.shadowRoot.querySelector('#directors').parser('new series')).to.be.equal('New series');
       expect(element.shadowRoot.querySelector('#stars').parser('new series')).to.be.equal('New series');
     });
-
-    // it('should accepts non numeric values', () => {
-    //   expect(element.shadowRoot.querySelector('#title').validators('new series')).to.be.true;
-      // expect(element.shadowRoot.querySelector('#directors').validators('new series')).to.be.true;
-      // expect(element.shadowRoot.querySelector('#stars').validators('new series')).to.be.true;
-    // });
 
 });
   
