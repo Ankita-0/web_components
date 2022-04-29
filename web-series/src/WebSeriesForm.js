@@ -77,7 +77,7 @@ export class WebSeriesForm extends LocalizeMixin(LitElement){
         loadDefaultFeedbackMessages();
         return html`
         <lion-form>
-        <form name="webseries_form" id="webseries_form" @submit = ${this._test}>
+        <form name="webseries_form" id="webseries_form" @submit = ${() => this._add()}>
             <lion-input  name="title" label = ${localize.msg('lang-demo:title')}: id = "title" class="inputs" placeholder=${localize.msg('lang-demo:title')} .validators=${[new Required({}, { getMessage: () => "Please enter a title"}), new NonNumeric()]} .parser = "${viewValue => viewValue.replace(/^[a-z]/, str => str.toUpperCase())}"></lion-input>
             <br><br>
             <lion-input label = ${localize.msg('lang-demo:directors')}: type = "text" id = "directors" name="directors" class="inputs" placeholder=${localize.msg('lang-demo:directors')} .validators=${[new Required({}, { getMessage: () => "Please enter the name of the director/directors"}), new NonNumeric()]} .parser = "${viewValue => viewValue.replace(/^[a-z]/, str => str.toUpperCase())}"></lion-input>
@@ -106,7 +106,7 @@ export class WebSeriesForm extends LocalizeMixin(LitElement){
         `;
     }
 
-    _test (e) {
+    _add () {
         const series_data = { 
             "Title": this.shadowRoot.querySelector('#title').value,
             "Directors": this.shadowRoot.querySelector('#directors').value,

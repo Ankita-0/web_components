@@ -3,7 +3,7 @@ import { LitElement, html, css } from 'lit';
 import { ajax } from '@lion/ajax';
 import { localize, LocalizeMixin } from '@lion/localize';
 
-class Webseries extends LocalizeMixin(LitElement) {
+export class Webseries extends LocalizeMixin(LitElement) {
 
     static get localizeNamespaces(){
         return [
@@ -24,9 +24,9 @@ class Webseries extends LocalizeMixin(LitElement) {
     constructor () {
         super();
         this.series = [];
-        this._fetchSeries();
         sessionStorage.setItem('My_First_Token', 
-            JSON.stringify('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6Ik15IEZpcnN0IFRva2VuIiwiaWF0IjoxNTE2MjM5MDIyfQ._JQBt_HVynPTYedOBa8iOo1jY9fjD_iwXneVw3YC0qg'));
+        JSON.stringify('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6Ik15IEZpcnN0IFRva2VuIiwiaWF0IjoxNTE2MjM5MDIyfQ._JQBt_HVynPTYedOBa8iOo1jY9fjD_iwXneVw3YC0qg'));
+        this._fetchSeries();
     }
 
     connectedCallback(){
@@ -58,9 +58,9 @@ class Webseries extends LocalizeMixin(LitElement) {
         </lion-tabs>
         <div class = "switch_lang">
         ${localize.msg('lang-demo:translateTo')} :: 
-            <button @click = ${this._switchToEnglish}> English </button>
-            <button @click = ${this._switchToFrench}> French </button>
-            <button @click = ${this._switchToGerman}> German </button>
+            <lion-button id="en" @click = ${()=>this._switchToEnglish()}> English </lion-button>
+            <lion-button id="fr" @click = ${()=>this._switchToFrench()}> French </lion-button>
+            <lion-button id="de" @click = ${()=>this._switchToGerman()}> German </lion-button>
         </div>
         `;  
     }
@@ -82,17 +82,17 @@ class Webseries extends LocalizeMixin(LitElement) {
         .catch(error => console.log(error));
     }
 
-    _switchToEnglish(e){
+    _switchToEnglish(){
         localize.locale = 'en-GB';
     }
 
-    _switchToGerman(e){
+    _switchToGerman(){
         localize.locale = 'de-DE';
     }
 
-    _switchToFrench(e){
+    _switchToFrench(){
         localize.locale = 'fr-FR';
     }
 }
-
+        
 customElements.define('web-series', Webseries);

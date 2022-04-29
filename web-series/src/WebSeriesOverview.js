@@ -96,7 +96,7 @@ export class WebSeriesOverview extends LocalizeMixin(LitElement) {
                 <div class = "card_column">
                     <web-series-card .data=${series}>
                     </web-series-card>
-                    <lion-button class = "Delete-button" id = "${series.id}" @click = ${this._deleteCard}> 
+                    <lion-button class = "Delete-button" id = "${series.id}" @click = ${(e)=>this._deleteCard(e)}> 
                     ${localize.msg('lang-demo:deletebtn')} 
                     </lion-button>
                 </div>             
@@ -111,8 +111,8 @@ export class WebSeriesOverview extends LocalizeMixin(LitElement) {
             method:'DELETE'
         })
         .then(response => console.log("successfully deleted"+ response))
-        .catch(error => console.log(error))
-        alert("Successfully deleted")
+        .catch(error => console.log(error));
+        alert("Successfully deleted");
     }
 }
 
