@@ -1,8 +1,19 @@
 import '@lion/tabs/define';
 import { LitElement, html, css } from 'lit';
 import { ajax } from '@lion/ajax';
+import { localize, LocalizeMixin } from '@lion/localize';
 
-class Webseries extends LitElement {
+export class Webseries extends LocalizeMixin(LitElement) {
+
+    static get localizeNamespaces(){
+        return [
+            {
+                'lang-demo': locale => import(`../translations/${locale}.js`)
+            },
+            ...super.localizeNamespaces
+        ];
+    }
+
     static get properties(){
         return{
             series : {
@@ -13,9 +24,9 @@ class Webseries extends LitElement {
     constructor () {
         super();
         this.series = [];
-        this._fetchSeries();
         sessionStorage.setItem('My_First_Token', 
-            JSON.stringify('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6Ik15IEZpcnN0IFRva2VuIiwiaWF0IjoxNTE2MjM5MDIyfQ._JQBt_HVynPTYedOBa8iOo1jY9fjD_iwXneVw3YC0qg'));
+        JSON.stringify('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6Ik15IEZpcnN0IFRva2VuIiwiaWF0IjoxNTE2MjM5MDIyfQ._JQBt_HVynPTYedOBa8iOo1jY9fjD_iwXneVw3YC0qg'));
+        this._fetchSeries();
     }
 
     connectedCallback(){
@@ -45,6 +56,12 @@ class Webseries extends LitElement {
                 <web-series-overview .data=${this.series} class="DynamicCards"> </web-series-overview>
             </p>
         </lion-tabs>
+        <div class = "switch_lang">
+        ${localize.msg('lang-demo:translateTo')} :: 
+            <lion-button id="en" @click = ${()=>this._switchToEnglish()}> English </lion-button>
+            <lion-button id="fr" @click = ${()=>this._switchToFrench()}> French </lion-button>
+            <lion-button id="de" @click = ${()=>this._switchToGerman()}> German </lion-button>
+        </div>
         `;  
     }
 
@@ -64,6 +81,18 @@ class Webseries extends LitElement {
         })
         .catch(error => console.log(error));
     }
-}
 
+    _switchToEnglish(){
+        localize.locale = 'en-GB';
+    }
+
+    _switchToGerman(){
+        localize.locale = 'de-DE';
+    }
+
+    _switchToFrench(){
+        localize.locale = 'fr-FR';
+    }
+}
+        
 customElements.define('web-series', Webseries);
