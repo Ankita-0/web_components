@@ -4,10 +4,10 @@ export const snapshots = {};
 snapshots["WebSeries has a static shadow dom"] = 
 `<lion-tabs selected-index="0">
   <button
-    aria-controls="panel-ry4056uad4"
+    aria-controls="panel-aua7tyup6k"
     aria-selected="true"
     class="formbtn"
-    id="button-ry4056uad4"
+    id="button-aua7tyup6k"
     role="tab"
     selected="true"
     slot="tab"
@@ -16,8 +16,8 @@ snapshots["WebSeries has a static shadow dom"] =
     Web Series Form
   </button>
   <p
-    aria-labelledby="button-ry4056uad4"
-    id="panel-ry4056uad4"
+    aria-labelledby="button-aua7tyup6k"
+    id="panel-aua7tyup6k"
     role="tabpanel"
     selected="true"
     slot="panel"
@@ -26,10 +26,10 @@ snapshots["WebSeries has a static shadow dom"] =
     </web-series-form>
   </p>
   <button
-    aria-controls="panel-tq88119zn6"
+    aria-controls="panel-mpcweoqyqz"
     aria-selected="false"
     class="overviewbtn"
-    id="button-tq88119zn6"
+    id="button-mpcweoqyqz"
     role="tab"
     slot="tab"
     tabindex="-1"
@@ -37,8 +37,8 @@ snapshots["WebSeries has a static shadow dom"] =
     Web Series Overview
   </button>
   <p
-    aria-labelledby="button-tq88119zn6"
-    id="panel-tq88119zn6"
+    aria-labelledby="button-mpcweoqyqz"
+    id="panel-mpcweoqyqz"
     role="tabpanel"
     slot="panel"
   >

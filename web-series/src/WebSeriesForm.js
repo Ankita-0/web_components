@@ -136,7 +136,7 @@ export class WebSeriesForm extends LocalizeMixin(LitElement){
     }
 }
 
-class NonNumeric extends Validator{
+export class NonNumeric extends Validator{
     execute(modelValue){
         const re = /\D/;
         if(re.test(modelValue)){
