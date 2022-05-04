@@ -12,9 +12,13 @@
 
 # JWT token
 
-Hardcoding the token-
+Hardcoding the token-<br><br>
 => Visit 'https://jwt.io/' and create your own JWT token.
 
 => Set the token in session/local storage.
 
 => Retrieve the token from session/local storage and sent it in the headers of the request at the time of sending the request. 
+
+# Localization
+
+The content is localized and it can be translated to 3 languages( english, french, german)<br>
